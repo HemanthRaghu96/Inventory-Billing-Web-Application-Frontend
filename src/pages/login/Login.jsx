@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { MdInventory } from "react-icons/md";
 import Footer from "../global/Footer";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,6 +11,12 @@ export default function Login() {
   const [datas, setDatas] = useState([]);
   const navigate=useNavigate()
 
+useEffect(()=>{
+  if( localStorage.getItem("login", "true")){
+    navigate('/dashboard')
+  }
+},[])
+ 
   const handleLogin = async () => {
     try {
       const loginData = {
@@ -72,7 +78,7 @@ export default function Login() {
               Login
             </button>
             <p className="text-base font-light px-2 my-1">
-              Don't have a Zoho account?{" "}
+              Don't have an account?{" "}
               <span className="text-buttonColor font-semibold cursor-pointer">
                 <Link to={"/Signup"}> Sign up now</Link>
               </span>
