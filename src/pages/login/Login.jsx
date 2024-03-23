@@ -11,11 +11,6 @@ export default function Login() {
   const [datas, setDatas] = useState([]);
   const navigate=useNavigate()
 
-useEffect(()=>{
-  if( localStorage.getItem("login", "true")){
-    navigate('/dashboard')
-  }
-},[])
  
   const handleLogin = async () => {
     try {
