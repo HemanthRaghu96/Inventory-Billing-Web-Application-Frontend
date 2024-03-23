@@ -86,14 +86,14 @@ export default function Sidebar() {
         }
       >
         <div className="text-black">
-          {/* Home Page */}
+          {/* Dashboard Page */}
           <div
             className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1"
             onClick={() => handleClickHome()}
           >
             <h1 className=" flex  items-center h-10   mx-2 ">
               <HiOutlineHome className="mr-3" />
-              Home
+              Dashboard
             </h1>
           </div>
           {/* Inventory Page */}
