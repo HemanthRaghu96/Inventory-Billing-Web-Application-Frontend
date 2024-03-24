@@ -6,7 +6,6 @@ import Login from "../login/Login";
 import Dashboard from "../dashboard/Dashboard";
 import Signup from "../Signup/Signup";
 import ItemList from "../Inventory/Items/ItemList";
-import ItemGroupList from "../Inventory/Itemgroups/ItemGroupList";
 import InventoryAdjustmentList from "../Inventory/Inventory adjustments/InventoryAdjustmentList";
 import Customers from "../Sales/Customers/Customers";
 import SalesOrderList from "../Sales/Sales Orders/SalesOrderList";
@@ -26,6 +25,11 @@ import Documents from "../Documents/Documents";
 import PaymentsMadeList from "../Purchases/Payments Made/PaymentsMadeList";
 import VendorCredits from "../Purchases/Vendor Credits/VendorCredits";
 import AddItem from "../Inventory/Items/AddItem";
+import ViewSingleItem from "../Inventory/Items/ViewSingleItem";
+import EditItem from "../Inventory/Items/EditItem";
+import AddInventoryAdjustment from "../Inventory/Inventory adjustments/AddInventoryAdjustment";
+import ViewSingleInventoryAdjustment from "../Inventory/Inventory adjustments/ViewSingleInventoryAdjustment";
+import EditInventoryAdjustment from "../Inventory/Inventory adjustments/EditInventoryAdjustment";
 
 export default function Global() {
   const location = useLocation();
@@ -44,13 +48,16 @@ export default function Global() {
         {/* Items page */}
         <Route path="/items" element={<ItemList />} />
         <Route path="/items/additems" element={<AddItem />} />
-         {/* Items page */}
-        <Route path="/itemgroups" element={<ItemGroupList />} />
+        <Route path="/items/itemname" element={<ViewSingleItem />} />
+        <Route path="/items/edititem" element={<EditItem />} />
          {/* Items page */}
         <Route
           path="/inventoryadjustments"
           element={<InventoryAdjustmentList />}
         />
+         <Route path="/inventoryadjustments/addinventoryadjustments" element={<AddInventoryAdjustment />} />
+        <Route path="/inventoryadjustments/inventoryadjustmentname" element={<ViewSingleInventoryAdjustment />} />
+        <Route path="/inventoryadjustments/editinventoryadjustment" element={<EditInventoryAdjustment />} />
         {/* Sales page */}
         <Route path="/customers" element={<Customers />} />
         <Route path="/salesorders" element={<SalesOrderList />} />

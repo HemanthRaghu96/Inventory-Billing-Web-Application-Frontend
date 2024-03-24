@@ -15,6 +15,11 @@ export default function ItemList() {
           </button>
         </Link>
       </div>
+      <Link to={"/items/itemname"}>
+            <button className="px-2 flex items-center bg-buttonColor text-white rounded-md mx-2">
+            view
+            </button>
+          </Link>
     </section>
   );
 }

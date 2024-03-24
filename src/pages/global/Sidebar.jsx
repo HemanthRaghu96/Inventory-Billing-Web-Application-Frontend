@@ -123,12 +123,6 @@ export default function Sidebar() {
                   <IoMdAddCircle className="size-5" />
                 </h1>
               </Link>
-              <Link to={"/itemgroups"}>
-                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                  Item Groups
-                  <IoMdAddCircle className="size-5" />
-                </h1>
-              </Link>
               <Link to={"/inventoryadjustments"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Inventory <br />
