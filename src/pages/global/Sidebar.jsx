@@ -10,6 +10,7 @@ import { RiArrowDropRightLine } from "react-icons/ri";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropLeftLine } from "react-icons/ri";
 import { PiPlugsConnected } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -87,15 +88,17 @@ export default function Sidebar() {
       >
         <div className="text-black">
           {/* Dashboard Page */}
-          <div
-            className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1"
-            onClick={() => handleClickHome()}
-          >
-            <h1 className=" flex  items-center h-10   mx-2 ">
-              <HiOutlineHome className="mr-3" />
-              Dashboard
-            </h1>
-          </div>
+          <Link to={"/dashboard"}>
+            <div
+              className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1"
+              onClick={() => handleClickHome()}
+            >
+              <h1 className=" flex  items-center h-10   mx-2 ">
+                <HiOutlineHome className="mr-3" />
+                Dashboard
+              </h1>
+            </div>
+          </Link>
           {/* Inventory Page */}
           <div
             className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1"
@@ -114,19 +117,25 @@ export default function Sidebar() {
           {/* Inventory Sub-Page */}
           {showInventorySubPage && (
             <div>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Items
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Item Groups
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Inventory <br />
-                Adjustments
-                <IoMdAddCircle className="size-5" />
-              </h1>
+              <Link to={"/items"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Items
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/itemgroups"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Item Groups
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/inventoryadjustments"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Inventory <br />
+                  Adjustments
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
             </div>
           )}
           {/* Sales Page */}
@@ -147,34 +156,48 @@ export default function Sidebar() {
           {/* Sales Sub-Page */}
           {showSalesSubPage && (
             <div>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Customers
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Sales Orders
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Packages
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Shipments
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Delivery Challans
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Invoices
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Payments Received
-                <IoMdAddCircle className="size-5" />
-              </h1>
+              <Link to={"/customers"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Customers
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/salesorders"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Sales Orders
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/packages"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Packages
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/Shipments"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Shipments
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/deliverychallans"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Delivery Challans
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/invoices"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Invoices
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/paymentsreceived"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Payments Received
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
             </div>
           )}
           {/* Purchases Page */}
@@ -195,34 +218,48 @@ export default function Sidebar() {
           {/* Purchases Sub-Page */}
           {showPurchasesSubPage && (
             <div>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Vendors
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Expenses
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Purchase Orders
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Purchase Receives
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Bills
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Payments Made
-                <IoMdAddCircle className="size-5" />
-              </h1>
-              <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
-                Vendor Credits
-                <IoMdAddCircle className="size-5" />
-              </h1>
+              <Link to={"/vendors"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Vendors
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/expenses"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Expenses
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/purchaseorders"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Purchase Orders
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/purchasereceives"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Purchase Receives
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/bills"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Bills
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/paymentsmade"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Payments Made
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
+              <Link to={"/vendorcredits"}>
+                <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
+                  Vendor Credits
+                  <IoMdAddCircle className="size-5" />
+                </h1>
+              </Link>
             </div>
           )}
           {/* Integrations Page */}
@@ -230,30 +267,36 @@ export default function Sidebar() {
             className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1"
             onClick={() => handleClickIntegration()}
           >
-            <h1 className=" flex  items-center h-10   mx-2 ">
-              <PiPlugsConnected className="mr-3" />
-              Integrations
-            </h1>
+            <Link to={"/integrations"}>
+              <h1 className=" flex  items-center h-10   mx-2 ">
+                <PiPlugsConnected className="mr-3" />
+                Integrations
+              </h1>
+            </Link>
           </div>
           {/* Reports Page */}
           <div
             className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1"
             onClick={() => handleClickReport()}
           >
-            <h1 className=" flex  items-center h-10   mx-2 ">
-              <MdQueryStats className="mr-3" />
-              Reports
-            </h1>
+            <Link to={"/reports"}>
+              <h1 className=" flex  items-center h-10   mx-2 ">
+                <MdQueryStats className="mr-3" />
+                Reports
+              </h1>
+            </Link>
           </div>
           {/* Documents Page */}
           <div
             className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 "
             onClick={() => handleClickDocument()}
           >
-            <h1 className=" flex  items-center h-10   mx-2 ">
-              <IoFolderOpenOutline className="mr-3" />
-              Documents
-            </h1>
+            <Link to={"/documents"}>
+              <h1 className=" flex  items-center h-10   mx-2 ">
+                <IoFolderOpenOutline className="mr-3" />
+                Documents
+              </h1>
+            </Link>
           </div>
           <div className="pb-20"></div>
 
