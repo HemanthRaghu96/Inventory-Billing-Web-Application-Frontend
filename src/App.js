@@ -1,7 +1,7 @@
 import Global from "./pages/global/Global";
 function App() {
   return (
-    <main className="app ">
+    <main className="">
       <Global />
     </main>
   );

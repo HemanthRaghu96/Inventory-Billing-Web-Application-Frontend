@@ -25,6 +25,7 @@ import Reports from "../Reports/Reports";
 import Documents from "../Documents/Documents";
 import PaymentsMadeList from "../Purchases/Payments Made/PaymentsMadeList";
 import VendorCredits from "../Purchases/Vendor Credits/VendorCredits";
+import AddItem from "../Inventory/Items/AddItem";
 
 export default function Global() {
   const location = useLocation();
@@ -39,14 +40,18 @@ export default function Global() {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
-
+        {/* Inventory Tab */}
+        {/* Items page */}
         <Route path="/items" element={<ItemList />} />
+        <Route path="/items/additems" element={<AddItem />} />
+         {/* Items page */}
         <Route path="/itemgroups" element={<ItemGroupList />} />
+         {/* Items page */}
         <Route
           path="/inventoryadjustments"
           element={<InventoryAdjustmentList />}
         />
-
+        {/* Sales page */}
         <Route path="/customers" element={<Customers />} />
         <Route path="/salesorders" element={<SalesOrderList />} />
         <Route path="/packages" element={<PackageList />} />
@@ -54,7 +59,7 @@ export default function Global() {
         <Route path="/deliverychallans" element={<DeliveryChallanList />} />
         <Route path="/invoices" element={<InvoiceList />} />
         <Route path="/paymentsreceived" element={<PaymentsReceivedList />} />
-
+        {/* Purchases page */}
         <Route path="/vendors" element={<VendorList />} />
         <Route path="/expenses" element={<ExpenseList />} />
         <Route path="/purchaseorders" element={<PurchaseOrdersList />} />
@@ -62,7 +67,7 @@ export default function Global() {
         <Route path="/bills" element={<BillsList />} />
         <Route path="/paymentsmade" element={<PaymentsMadeList />} />
         <Route path="/vendorcredits" element={<VendorCredits />} />
-
+        {/*   */}
         <Route path="/integrations" element={<Integrations />} />
         <Route path="/reports" element={<Reports />} />
         <Route path="/documents" element={<Documents />} />
