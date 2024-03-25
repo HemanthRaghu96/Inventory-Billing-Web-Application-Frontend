@@ -145,13 +145,13 @@ export default function AddItem() {
             <h1 className="">Description </h1>
             <input type="text" className="border-2 rounded-md px-2  h-8" />
           </div>
-          <div className="flex justify-between my-4">
+          {/* <div className="flex justify-between my-4">
             <h1 className="">Preferred Vendor </h1>
             <input type="text" className="border-2 rounded-md px-2  h-8" />
-          </div>
+          </div> */}
         </div>
       </div>
-      {/*Track Inventory for this item */}
+      {/* Track Inventory for this item
       <h1 className="font-semibold text-xl">Track Inventory for this item</h1>
       <div className="flex justify-start ">
         <div className=" mt-1 w-[320px]">
@@ -174,7 +174,7 @@ export default function AddItem() {
             <input type="text" className="border-2 rounded-md px-2 h-10 " />
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -48,8 +48,8 @@ export default function Global() {
         {/* Items page */}
         <Route path="/items" element={<ItemList />} />
         <Route path="/items/additems" element={<AddItem />} />
-        <Route path="/items/itemname" element={<ViewSingleItem />} />
-        <Route path="/items/edititem" element={<EditItem />} />
+        <Route path="/items/:itemId" element={<ViewSingleItem />} />
+        <Route path="/items/edititem/:itemId" element={<EditItem />} />
          {/* Items page */}
         <Route
           path="/inventoryadjustments"
