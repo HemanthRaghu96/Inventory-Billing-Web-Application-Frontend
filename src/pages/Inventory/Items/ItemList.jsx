@@ -8,6 +8,7 @@ import ItemsCard from "../../../components/ItemsCard";
 export default function ItemList() {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  // const column = ["NAME", "SKU", "UNIT", "DESCRIPTION", "PRICE"];
 
   useEffect(() => {
     fetchItemData();
@@ -48,14 +49,20 @@ export default function ItemList() {
         <div className="p-10 my-15 flex justify-center">
           <button
             onClick={() => selectPageHandler(page - 1)}
-            className={page > 1 ? "py-2 px-3 border" : "opacity-0 py-2 px-3 border"}
+            className={
+              page > 1 ? "py-2 px-3 border" : "opacity-0 py-2 px-3 border"
+            }
           >
             ◀
           </button>
           {[...Array(Math.ceil(data.length / 10))].map((_, i) => (
             <button
               key={i + 1}
-              className={page === i + 1 ? "bg-gray-400 border py-2 px-3 " : "py-2 px-3 border" }
+              className={
+                page === i + 1
+                  ? "bg-gray-400 border py-2 px-3 "
+                  : "py-2 px-3 border"
+              }
               onClick={() => selectPageHandler(i + 1)}
             >
               {i + 1}
@@ -63,12 +70,54 @@ export default function ItemList() {
           ))}
           <button
             onClick={() => selectPageHandler(page + 1)}
-            className={page < Math.ceil(data.length / 10) ? "py-2 px-3 border" : "opacity-0  py-2 px-3 border"}
+            className={
+              page < Math.ceil(data.length / 10)
+                ? "py-2 px-3 border"
+                : "opacity-0  py-2 px-3 border"
+            }
           >
             ▶
           </button>
         </div>
       )}
+      {/* <div className="overflow-x-auto">
+        <table className="table-auto min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              {column.map((data, i) => (
+                <th
+                  key={i}
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  {data}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {data.map((record, i) => (
+              <tr key={i}>
+                <td className="px-6 py-4 whitespace-nowrap flex items-center">
+                  <img
+                    src={record.poster}
+                    alt={record.name}
+                    className="size-10 mr-2 object-contain"
+                  />
+                  {record.name}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">{record.sku}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{record.unit}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {record.salesdescription}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {record.sellingprice}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div> */}
     </section>
   );
 }
