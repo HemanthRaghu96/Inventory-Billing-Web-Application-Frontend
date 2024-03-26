@@ -50,14 +50,14 @@ export default function Global() {
         <Route path="/items/additems" element={<AddItem />} />
         <Route path="/items/:itemId" element={<ViewSingleItem />} />
         <Route path="/items/edititem/:itemId" element={<EditItem />} />
-         {/* Items page */}
+         {/* Items page
         <Route
           path="/inventoryadjustments"
           element={<InventoryAdjustmentList />}
         />
          <Route path="/inventoryadjustments/addinventoryadjustments" element={<AddInventoryAdjustment />} />
         <Route path="/inventoryadjustments/inventoryadjustmentname" element={<ViewSingleInventoryAdjustment />} />
-        <Route path="/inventoryadjustments/editinventoryadjustment" element={<EditInventoryAdjustment />} />
+        <Route path="/inventoryadjustments/editinventoryadjustment" element={<EditInventoryAdjustment />} /> */}
         {/* Sales page */}
         <Route path="/customers" element={<Customers />} />
         <Route path="/salesorders" element={<SalesOrderList />} />

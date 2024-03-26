@@ -43,7 +43,7 @@ export default function EditItem() {
   const [purchasedescription, setPurchaseDescription] = useState(
     data.purchasedescription
   );
-console.log(name)
+
   const handleSave = async () => {
     const editedData = {
       name,
