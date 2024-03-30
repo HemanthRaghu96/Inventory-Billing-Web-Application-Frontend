@@ -70,7 +70,7 @@ export default function EditItem() {
   return (
     <section className="ml-14 mt-16  md:ml-56 h-full overflow-y-auto">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
-        <h1 className="font-semibold text-xl">New Item </h1>
+        <h1 className="font-semibold text-xl">{name} </h1>
         <Link to={"/items"}>
           <HiMiniXMark className="mr-1 size-7 text-red-500" />
         </Link>

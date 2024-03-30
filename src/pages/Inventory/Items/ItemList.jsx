@@ -53,7 +53,7 @@ export default function ItemList() {
               page > 1 ? "py-2 px-3 border" : "opacity-0 py-2 px-3 border"
             }
           >
-            ◀
+          Prev
           </button>
           {[...Array(Math.ceil(data.length / 10))].map((_, i) => (
             <button
@@ -76,7 +76,7 @@ export default function ItemList() {
                 : "opacity-0  py-2 px-3 border"
             }
           >
-            ▶
+            Next
           </button>
         </div>
       )}

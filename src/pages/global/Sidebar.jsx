@@ -123,13 +123,13 @@ export default function Sidebar() {
                   <IoMdAddCircle className="size-5" />
                 </h1>
               </Link>
-              <Link to={"/inventoryadjustments"}>
+              {/* <Link to={"/inventoryadjustments"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Inventory <br />
                   Adjustments
                   <IoMdAddCircle className="size-5" />
                 </h1>
-              </Link>
+              </Link> */}
             </div>
           )}
           {/* Sales Page */}
@@ -162,7 +162,7 @@ export default function Sidebar() {
                   <IoMdAddCircle className="size-5" />
                 </h1>
               </Link>
-              <Link to={"/packages"}>
+              {/* <Link to={"/packages"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Packages
                   <IoMdAddCircle className="size-5" />
@@ -173,25 +173,25 @@ export default function Sidebar() {
                   Shipments
                   <IoMdAddCircle className="size-5" />
                 </h1>
-              </Link>
-              <Link to={"/deliverychallans"}>
+              </Link> */}
+              {/* <Link to={"/deliverychallans"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Delivery Challans
                   <IoMdAddCircle className="size-5" />
                 </h1>
-              </Link>
+              </Link> */}
               <Link to={"/invoices"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Invoices
                   <IoMdAddCircle className="size-5" />
                 </h1>
               </Link>
-              <Link to={"/paymentsreceived"}>
+              {/* <Link to={"/paymentsreceived"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Payments Received
                   <IoMdAddCircle className="size-5" />
                 </h1>
-              </Link>
+              </Link> */}
             </div>
           )}
           {/* Purchases Page */}
@@ -218,31 +218,31 @@ export default function Sidebar() {
                   <IoMdAddCircle className="size-5" />
                 </h1>
               </Link>
-              <Link to={"/expenses"}>
+              {/* <Link to={"/expenses"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Expenses
                   <IoMdAddCircle className="size-5" />
                 </h1>
-              </Link>
+              </Link> */}
               <Link to={"/purchaseorders"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Purchase Orders
                   <IoMdAddCircle className="size-5" />
                 </h1>
               </Link>
-              <Link to={"/purchasereceives"}>
+              {/* <Link to={"/purchasereceives"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Purchase Receives
                   <IoMdAddCircle className="size-5" />
                 </h1>
-              </Link>
+              </Link> */}
               <Link to={"/bills"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Bills
                   <IoMdAddCircle className="size-5" />
                 </h1>
               </Link>
-              <Link to={"/paymentsmade"}>
+              {/* <Link to={"/paymentsmade"}>
                 <h1 className=" flex justify-between  items-center text-sm py-2    pl-9 pr-3 cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 ">
                   Payments Made
                   <IoMdAddCircle className="size-5" />
@@ -253,11 +253,11 @@ export default function Sidebar() {
                   Vendor Credits
                   <IoMdAddCircle className="size-5" />
                 </h1>
-              </Link>
+              </Link> */}
             </div>
           )}
           {/* Integrations Page */}
-          <div
+          {/* <div
             className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1"
             onClick={() => handleClickIntegration()}
           >
@@ -267,9 +267,9 @@ export default function Sidebar() {
                 Integrations
               </h1>
             </Link>
-          </div>
+          </div> */}
           {/* Reports Page */}
-          <div
+          {/* <div
             className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1"
             onClick={() => handleClickReport()}
           >
@@ -279,9 +279,9 @@ export default function Sidebar() {
                 Reports
               </h1>
             </Link>
-          </div>
+          </div> */}
           {/* Documents Page */}
-          <div
+          {/* <div
             className="flex justify-between items-center cursor-pointer hover:bg-slate-200 rounded-lg p-1 m-1 "
             onClick={() => handleClickDocument()}
           >
@@ -291,7 +291,7 @@ export default function Sidebar() {
                 Documents
               </h1>
             </Link>
-          </div>
+          </div> */}
           <div className="pb-20"></div>
 
           {open ? (

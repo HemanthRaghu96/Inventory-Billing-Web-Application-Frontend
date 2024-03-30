@@ -30,6 +30,24 @@ import EditItem from "../Inventory/Items/EditItem";
 import AddInventoryAdjustment from "../Inventory/Inventory adjustments/AddInventoryAdjustment";
 import ViewSingleInventoryAdjustment from "../Inventory/Inventory adjustments/ViewSingleInventoryAdjustment";
 import EditInventoryAdjustment from "../Inventory/Inventory adjustments/EditInventoryAdjustment";
+import AddCustomers from "../Sales/Customers/AddCustomers";
+import ViewSingleCustomers from "../Sales/Customers/ViewSingleCustomers";
+import EditCustomers from "../Sales/Customers/EditCustomers";
+import EditVendors from "../Purchases/Vendors/EditVendors";
+import ViewSingleVendors from "../Purchases/Vendors/ViewSingleVendors";
+import AddVendors from "../Purchases/Vendors/AddVendors";
+import AddSalesOrder from "../Sales/Sales Orders/AddSalesOrder";
+import ViewSingleSalesOrder from "../Sales/Sales Orders/ViewSingleSalesOrder";
+import EditSalesOrder from "../Sales/Sales Orders/EditSalesOrder";
+import Addbills from "../Purchases/Bills/Addbills";
+import ViewSinglebills from "../Purchases/Bills/ViewSinglebills";
+import Editbills from "../Purchases/Bills/Editbills";
+import Addpurchaseorders from "../Purchases/Purchase Orders/Addpurchaseorders";
+import ViewSinglepurchaseorders from "../Purchases/Purchase Orders/ViewSinglepurchaseorders";
+import Editpurchaseorders from "../Purchases/Purchase Orders/Editpurchaseorders";
+import AddInvoices from "../Sales/Invoices/AddInvoices";
+import ViewSingleInvoices from "../Sales/Invoices/ViewSingleInvoices";
+import EditInvoices from "../Sales/Invoices/EditInvoices";
 
 export default function Global() {
   const location = useLocation();
@@ -51,33 +69,51 @@ export default function Global() {
         <Route path="/items/:itemId" element={<ViewSingleItem />} />
         <Route path="/items/edititem/:itemId" element={<EditItem />} />
          {/* Items page
-        <Route
-          path="/inventoryadjustments"
-          element={<InventoryAdjustmentList />}
-        />
+        <Route path="/inventoryadjustments" element={<InventoryAdjustmentList />}/>
          <Route path="/inventoryadjustments/addinventoryadjustments" element={<AddInventoryAdjustment />} />
         <Route path="/inventoryadjustments/inventoryadjustmentname" element={<ViewSingleInventoryAdjustment />} />
         <Route path="/inventoryadjustments/editinventoryadjustment" element={<EditInventoryAdjustment />} /> */}
         {/* Sales page */}
+          {/* Customers page */}
         <Route path="/customers" element={<Customers />} />
+        <Route path="/customers/addcustomers" element={<AddCustomers />} />
+        <Route path="/customers/:customersId" element={<ViewSingleCustomers />} />
+        <Route path="/customers/customersitem/:customersId" element={<EditCustomers />} />
+        {/* Sales Order page */}
         <Route path="/salesorders" element={<SalesOrderList />} />
-        <Route path="/packages" element={<PackageList />} />
-        <Route path="/Shipments" element={<ShipmentList />} />
-        <Route path="/deliverychallans" element={<DeliveryChallanList />} />
+        <Route path="/salesorders/addsalesorders" element={<AddSalesOrder />} />  
+        <Route path="/salesorders/:salesordersId" element={<ViewSingleSalesOrder />} />
+        <Route path="/salesorders/salesordersitem/:salesordersId" element={<EditSalesOrder/>} />
+        {/* <Route path="/packages" element={<PackageList />} />
+        <Route path="/Shipments" element={<ShipmentList />} /> */}
+        {/* <Route path="/deliverychallans" element={<DeliveryChallanList />} /> */}
         <Route path="/invoices" element={<InvoiceList />} />
-        <Route path="/paymentsreceived" element={<PaymentsReceivedList />} />
+        <Route path="/invoices/addinvoices" element={<AddInvoices />} />  
+        <Route path="/invoices/:invoicesId" element={<ViewSingleInvoices />} />
+        <Route path="/invoices/invoicesitem/:invoicesId" element={<EditInvoices />} />
+        {/* <Route path="/paymentsreceived" element={<PaymentsReceivedList />} /> */}
         {/* Purchases page */}
+         {/* Vendor page */}
         <Route path="/vendors" element={<VendorList />} />
-        <Route path="/expenses" element={<ExpenseList />} />
+        <Route path="/vendors/addvendors" element={<AddVendors />} />
+        <Route path="/vendors/:vendorsId" element={<ViewSingleVendors />} />
+        <Route path="/vendors/vendorsdetails/:vendorsId" element={<EditVendors/>} />
+        {/* <Route path="/expenses" element={<ExpenseList />} /> */}
         <Route path="/purchaseorders" element={<PurchaseOrdersList />} />
-        <Route path="/purchasereceives" element={<PurchaseReceiveList />} />
+        <Route path="/purchaseorders/addpurchaseorders" element={<Addpurchaseorders />} />  
+        <Route path="/purchaseorders/:purchaseordersId" element={<ViewSinglepurchaseorders />} />
+        <Route path="/purchaseorders/purchaseordersitem/:purchaseordersId" element={<Editpurchaseorders/>} />
+        {/* <Route path="/purchasereceives" element={<PurchaseReceiveList />} /> */}
         <Route path="/bills" element={<BillsList />} />
-        <Route path="/paymentsmade" element={<PaymentsMadeList />} />
-        <Route path="/vendorcredits" element={<VendorCredits />} />
+        <Route path="/bills/addbills" element={<Addbills />} />  
+        <Route path="/bills/:billsId" element={<ViewSinglebills />} />
+        <Route path="/bills/billsitem/:billsId" element={<Editbills/>} />
+        {/* <Route path="/paymentsmade" element={<PaymentsMadeList />} /> */}
+        {/* <Route path="/vendorcredits" element={<VendorCredits />} /> */}
         {/*   */}
-        <Route path="/integrations" element={<Integrations />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/documents" element={<Documents />} />
+        {/* <Route path="/integrations" element={<Integrations />} /> */}
+        {/* <Route path="/reports" element={<Reports />} /> */}
+        {/* <Route path="/documents" element={<Documents />} /> */}
       </Routes>
     </section>
   );
