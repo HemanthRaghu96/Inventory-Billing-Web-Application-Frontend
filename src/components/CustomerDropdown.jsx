@@ -1,0 +1,44 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API } from '../api/api';
+
+const CustomerDropdown = ({customername, setCustomerName}) => {
+  const [names, setNames] = useState([]);
+
+  useEffect(() => {
+    const fetchNames = async () => {
+      try {
+        const response = await axios.get(`${API}getallcustomer`);
+        console.log(response.data.allCustomer)
+        setNames(response.data.allCustomer); 
+      } catch (error) {
+        console.error('Error fetching names:', error);
+      }
+    };
+
+    fetchNames();
+  }, []);
+
+  const handleChange = (e) => {
+    setCustomerName(e.target.value);
+  };
+
+  return (
+    <div className="flex items-center justify-center">
+      <select
+        value={customername}
+        onChange={handleChange}
+        className="border-2 rounded-md px-2 h-8 w-[200px]"
+      >
+        <option value="">Select a Customer </option>
+        {names.map((name) => (
+          <option key={name._id}>
+            {name.displayname}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+export default CustomerDropdown;
