@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API } from '../api/api';
 
-const VendorDropdown = ({vendorname, setVendorVame}) => {
+const VendorDropdown = ({vendorname, setVendorName}) => {
   const [names, setNames] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const VendorDropdown = ({vendorname, setVendorVame}) => {
   }, []);
 
   const handleChange = (e) => {
-    setVendorVame(e.target.value);
+    setVendorName(e.target.value);
   };
 
   return (
