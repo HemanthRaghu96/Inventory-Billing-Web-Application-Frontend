@@ -12,8 +12,8 @@ export default function AddSalesOrder() {
   const [date, setDate] = useState("");
   const [shipmentdate, setShipmentDate] = useState("");
   const [items, setItems] = useState([]);
-  const [total, setTotal] = useState("");
-  const [shippingcharges, setShippingCharges] = useState("");
+  const [totalamount, setTotalAmount] = useState("");
+  const [shipmentingcharges, setShipmentingCharges] = useState("");
   const [customernote, setCustomerNote] = useState("");
 console.log(items)
   const handleSave = async () => {
@@ -22,8 +22,9 @@ console.log(items)
       salesorder,
       date,
       shipmentdate,
+      totalamount,
       items,
-      shippingcharges,
+      shipmentingcharges,
       customernote,
     };
     try {
@@ -55,8 +56,8 @@ console.log(items)
     items.forEach((item) => {
       calculatedTotal += item.price;
     });
-    setTotal(calculatedTotal);
-  }, [items]);
+    setTotalAmount(calculatedTotal+Number(shipmentingcharges));
+  }, [items,shipmentingcharges]);
   return (
     <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
@@ -192,8 +193,8 @@ console.log(items)
       </div>
 <div className="">
 <h1 className="font-semibold text-lg">Sub Total</h1>
-<h1 className="flex">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-8 ml-10" onChange={(e)=>setShippingCharges(e.target.value)}/></span></h1>
-<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold">{total-shippingcharges}</span></h1>
+<h1 className="flex">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-8 ml-10" onChange={(e)=>setShipmentingCharges(e.target.value)}/></span></h1>
+<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold">{totalamount}</span></h1>
 
 
 </div>

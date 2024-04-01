@@ -36,8 +36,8 @@ export  function Editpurchaseorder({ data, purchaseordersId }) {
   const [date, setDate] = useState(data.date);
   const [shipmentdate, setShipmentDate] = useState(data.shipmentdate);
   const [items, setItems] = useState(data.items || []);
-  const [total, setTotal] = useState("");
-  const [shippingcharges, setShippingCharges] = useState(data.shippingcharges);
+  const [totalamount, setTotalamount] = useState("");
+  const [shipmentingcharges, setShipmentingCharges] = useState(data.shipmentingcharges);
   const [customernote, setVendorNote] = useState(data.customernote);
 console.log(items)
   const handleSave = async () => {
@@ -46,8 +46,9 @@ console.log(items)
       purchaseorder,
       date,
       shipmentdate,
+      totalamount,
       items,
-      shippingcharges,
+      shipmentingcharges,
       customernote,
     };
     try {
@@ -79,8 +80,8 @@ console.log(items)
     items.forEach((item) => {
       calculatedTotal += item.price;
     });
-    setTotal(calculatedTotal);
-  }, [items]);
+    setTotalamount(calculatedTotal+Number(shipmentingcharges));
+  }, [items,shipmentingcharges]);
   return (
     <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
@@ -216,8 +217,8 @@ console.log(items)
       </div>
 <div className="">
 <h1 className="font-semibold text-lg">Sub Total</h1>
-<h1 className="flex">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-8 ml-10" onChange={(e)=>setShippingCharges(e.target.value)}/></span></h1>
-<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold">{total-shippingcharges}</span></h1>
+<h1 className="flex">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-8 ml-10" onChange={(e)=>setShipmentingCharges(e.target.value)} value={shipmentingcharges}/></span></h1>
+<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold">{totalamount}</span></h1>
 
 
 </div>

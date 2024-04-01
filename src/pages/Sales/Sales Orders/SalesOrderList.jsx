@@ -11,9 +11,7 @@ export default function SalesOrderList() {
     "SALES ORDER NUMBER",
     "DATE",
     "CUSTOMER NAME",
-    "STATUS",
-    "AMOUNT",
-    "PAYMENT",
+    "AMOUNT", 
   ];
   useEffect(() => {
     fetchItemData();
@@ -74,11 +72,7 @@ export default function SalesOrderList() {
                   {record.customername}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {/* {record.phonenumber} */}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {/* {record.billingaddress},{record.billingcity},
-                  {record.billingcountry},{record.billingpincode} */}
+                  {record.totalamount}
                 </td>
               </tr>
             ))}

@@ -11,13 +11,11 @@ export default function PurchaseOrdersList() {
     "PURCHASE ORDER NUMBER",
     "DATE",
     "VENDOR NAME",
-    "STATUS",
     "AMOUNT",
-    "PAYMENT",
   ];
   useEffect(() => {
     fetchItemData();
-  }, []);
+  }, [data]);
 
   const fetchItemData = async () => {
     try {
@@ -75,11 +73,7 @@ export default function PurchaseOrdersList() {
                   {record.vendorname}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {/* {record.phonenumber} */}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {/* {record.billingaddress},{record.billingcity},
-                  {record.billingcountry},{record.billingpincode} */}
+                  {record.totalamount}
                 </td>
               </tr>
             ))}

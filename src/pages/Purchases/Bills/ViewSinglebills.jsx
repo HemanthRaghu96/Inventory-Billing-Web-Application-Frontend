@@ -56,6 +56,7 @@ export default function ViewSinglebills() {
           <h1 className="my-1 text-lg"> Order Number</h1>
           <h1 className="my-1 text-lg">Bill Date</h1>
           <h1 className="my-1 text-lg">Due Date</h1>
+          <h1 className="my-1 text-lg">Payment Status</h1>
         </div>
         <div className="py-1 my-1  w-40">
           <h1 className="my-1 text-lg">
@@ -68,6 +69,9 @@ export default function ViewSinglebills() {
           </h1>
           <h1 className="my-1 text-lg">
             {data.duedate == null ? "null" : data.duedate}
+          </h1>
+          <h1 className="my-1 text-lg">
+            {data.payment == null ? "null" : data.payment}
           </h1>
         </div>
       </div>
@@ -107,6 +111,10 @@ export default function ViewSinglebills() {
               
           </tbody>
         </table>
+        <div className="flex items-center">
+          <h1 className="font-semibold text-xl mt-4 mb-2">Total Amount</h1>
+          <h1 className="ml-10">{data.totalamount}</h1>
+        </div>
       </div>
     </section>
   );

@@ -105,6 +105,10 @@ export default function ViewSinglepurchaseorders() {
               
           </tbody>
         </table>
+        <div className="flex items-center">
+          <h1 className="font-semibold text-xl mt-4 mb-2">Total Amount</h1>
+          <h1 className="ml-10">{data.totalamount}</h1>
+        </div>
       </div>
     </section>
   );

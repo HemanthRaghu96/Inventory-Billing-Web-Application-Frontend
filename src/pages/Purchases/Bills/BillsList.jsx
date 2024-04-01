@@ -17,7 +17,7 @@ export default function BillsList() {
   ];
   useEffect(() => {
     fetchItemData();
-  }, []);
+  }, [data]);
 
   const fetchItemData = async () => {
     try {
@@ -78,11 +78,10 @@ export default function BillsList() {
                   {record.vendorname}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {/* {record.phonenumber} */}
+                  {record.payment}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {/* {record.billingaddress},{record.billingcity},
-                  {record.billingcountry},{record.billingpincode} */}
+                {record.totalamount}
                 </td>
               </tr>
             ))}

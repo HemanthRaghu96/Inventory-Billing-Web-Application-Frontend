@@ -3,7 +3,6 @@ import { HiMiniXMark } from "react-icons/hi2";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { API } from "../../../api/api";
 import axios from "axios";
-import CustomerDropdown from "../../../components/CustomerDropdown";
 import VendorDropdown from "../../../components/VendorDropdown";
 
 export default function Editbills() {
@@ -36,9 +35,11 @@ export  function Editbill({data,billsId}) {
   const [billdate, setBilldate] = useState(data.billdate);
   const [duedate, setDuedate] = useState(data.duedate);
   const [items, setItems] = useState(data.items || []);
-  const [total, setTotal] = useState("");
-  const [shippingcharges, setShippingCharges] = useState("");
-  const [customernote, setCustomerNote] = useState("");
+  const [totalamount, setTotalAmount] = useState(data.totalamount);
+  const [payment, setPayment] = useState(data.payment);
+  const [shipmentingcharges, setShipmentingCharges] = useState(data.shipmentingcharges);
+  const [customernote, setCustomerNote] = useState(data.customernote);
+  const status=["UNPAID","PARTIALLY PAID","PAID"]
 console.log(items)
   const handleSave = async () => {
     const billData = {
@@ -47,8 +48,10 @@ console.log(items)
       bill,
       billdate,
       duedate,
+      totalamount,
+      payment,
       items,
-      shippingcharges,
+      shipmentingcharges,
       customernote,
     };
     try {
@@ -80,8 +83,8 @@ console.log(items)
     items.forEach((item) => {
       calculatedTotal += item.price;
     });
-    setTotal(calculatedTotal);
-  }, [items]);
+    setTotalAmount(calculatedTotal+Number(shipmentingcharges));
+  }, [items,shipmentingcharges]);
   return (
     <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
@@ -135,6 +138,21 @@ console.log(items)
               onChange={(e) => setDuedate(e.target.value)}
               value={duedate}
             />
+          </div>
+          <div className="flex justify-between my-4">
+            <h1>Payment Status</h1>
+            <select
+        value={payment}
+        onChange={(e)=>setPayment(e.target.value)}
+        className="border-2 rounded-md px-2 h-8 w-[200px]"
+      >
+        <option value="">Select a payment </option>
+        {status.map((name,index) => (
+          <option key={index}>
+            {name}
+          </option>
+        ))}
+      </select>
           </div>
         </div>
       </div>
@@ -226,8 +244,8 @@ console.log(items)
       </div>
 <div className="">
 <h1 className="font-semibold text-lg">Sub Total</h1>
-<h1 className="flex">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-8 ml-10" onChange={(e)=>setShippingCharges(e.target.value)}/></span></h1>
-<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold">{total-shippingcharges}</span></h1>
+<h1 className="flex">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-8 ml-10" onChange={(e)=>setShipmentingCharges(e.target.value)} value={shipmentingcharges}/></span></h1>
+<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold">{totalamount}</span></h1>
 
 
 </div>
