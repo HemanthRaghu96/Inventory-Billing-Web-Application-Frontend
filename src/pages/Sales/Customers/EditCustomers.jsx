@@ -82,175 +82,171 @@ function EditCustomer({ data, customersId }) {
       </div>
       {/* First set of data */}
       <div className="flex justify-start ">
-        <div className="mt-5 w-[320px]">
+        <div className="mt-5 w-[220px] md:w-[320px]">
           <div className="flex justify-between my-4">
-            <h1 className="">First Name</h1>
+            <h1 className="text-xs md:text-base">First Name</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setFirstName(e.target.value)}
               value={firstname}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Last Name</h1>
+            <h1 className="text-xs md:text-base">Last Name</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setLastName(e.target.value)}
               value={lastname}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Display Name</h1>
+            <h1 className="text-xs md:text-base">Display Name</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setDisplayName(e.target.value)}
               value={displayname}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">company Name</h1>
+            <h1 className="text-xs md:text-base">company Name</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setCompanyName(e.target.value)}
               value={companyname}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Email</h1>
+            <h1 className="text-xs md:text-base">Email</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Phone Number</h1>
+            <h1 className="text-xs md:text-base">Phone Number</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setPhoneNumber(e.target.value)}
               value={phonenumber}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">PAN</h1>
+            <h1 className="text-xs md:text-base">PAN</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setPan(e.target.value)}
               value={pan}
             />
           </div>
         </div>
-        
       </div>
       {/* Second set of data */}
-      <div className="flex justify-start ">
-      
-        <div className=" mt-5 w-[320px]">
-        <h1 className="font-bold text-lg">Billing Address</h1>
+      <div className="flex flex-col lg:flex-row justify-start ">
+        <div className=" mt-5 w-[220px] md:w-[320px]">
+          <h1 className="font-bold text-lg">Billing Address</h1>
           <div className="flex justify-between my-4">
-         
-            <h1 className="">Address</h1>
+            <h1 className="text-xs md:text-base">Address</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setBillingAddress(e.target.value)}
               value={billingaddress}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">City</h1>
+            <h1 className="text-xs md:text-base">City</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setBillingCity(e.target.value)}
               value={billingcity}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Country </h1>
+            <h1 className="text-xs md:text-base">Country </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setBillingCountry(e.target.value)}
               value={billingcountry}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">State </h1>
+            <h1 className="text-xs md:text-base">State </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setBillingState(e.target.value)}
               value={billingstate}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Pincode </h1>
+            <h1 className="text-xs md:text-base">Pincode </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setBillingPincode(e.target.value)}
               value={billingpincode}
             />
           </div>
         </div>
-        <div className="mt-5 w-[320px] ml-20">
-        <h1 className="font-bold text-lg">Shipping Address</h1>
+        <div className="mt-5 w-[220px] md:w-[320px] lg:ml-20">
+          <h1 className="font-bold text-lg">Shipping Address</h1>
           <div className="flex justify-between my-4">
-            <h1 className="">Address</h1>
+            <h1 className="text-xs md:text-base">Address</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setShippingAddress(e.target.value)}
               value={shippingaddress}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">City</h1>
+            <h1 className="text-xs md:text-base">City</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setShippingCity(e.target.value)}
               value={shippingcity}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Country </h1>
+            <h1 className="text-xs md:text-base">Country </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setShippingCountry(e.target.value)}
               value={shippingcountry}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">State </h1>
+            <h1 className="text-xs md:text-base">State </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setShippingState(e.target.value)}
               value={shippingstate}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Pincode </h1>
+            <h1 className="text-xs md:text-base">Pincode </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem] text-xs md:text-base"
               onChange={(e) => setShippingPincode(e.target.value)}
               value={shippingpincode}
             />
           </div>
         </div>
       </div>
-      
 
       <div className="flex my-4">
         <button

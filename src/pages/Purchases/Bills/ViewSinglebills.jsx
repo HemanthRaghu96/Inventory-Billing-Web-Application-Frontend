@@ -27,7 +27,7 @@ export default function ViewSinglebills() {
   return (
     <section className="ml-14 mt-16  md:ml-56 h-screen">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
-        <h1 className="font-semibold text-xl">Bill Details</h1>
+        <h1 className="font-semiboldtext-sm md:text-lg">Bill Details</h1>
         <div className="flex">
           <Link to={`/bills/billsitem/${billsId}`}>
             <button className="px-2 flex items-center bg-buttonColor text-white rounded-md mx-2">
@@ -45,45 +45,45 @@ export default function ViewSinglebills() {
             </button>
           </Link>
           <Link to={"/bills"}>
-            <HiMiniXMark className="mr-1 ml-20 size-7 text-red-500" />
+            <HiMiniXMark className="mr-1 md:ml-20 size-7 text-red-500" />
           </Link>
         </div>
       </div>
       <div className="flex ">
         <div className="py-1 my-1 w-[200px]">
-          <h1 className="my-1 text-lg">Vendor Name</h1>
-          <h1 className="my-1 text-lg">Bill</h1>
-          <h1 className="my-1 text-lg"> Order Number</h1>
-          <h1 className="my-1 text-lg">Bill Date</h1>
-          <h1 className="my-1 text-lg">Due Date</h1>
-          <h1 className="my-1 text-lg">Payment Status</h1>
+          <h1 className="my-1 text-xs md:text-lg">Vendor Name</h1>
+          <h1 className="my-1 text-xs md:text-lg">Bill</h1>
+          <h1 className="my-1 text-xs md:text-lg"> Order Number</h1>
+          <h1 className="my-1 text-xs md:text-lg">Bill Date</h1>
+          <h1 className="my-1 text-xs md:text-lg">Due Date</h1>
+          <h1 className="my-1 text-xs md:text-lg">Payment Status</h1>
         </div>
         <div className="py-1 my-1  w-40">
-          <h1 className="my-1 text-lg">
+          <h1 className="my-1 text-xs md:text-lg">
             {data.vendorname == null ? "null" : data.vendorname}
           </h1>
-          <h1 className="my-1 text-lg">{data.bill}</h1>
-          <h1 className="my-1 text-lg">{data.ordernumber}</h1>
-          <h1 className="my-1 text-lg">
+          <h1 className="my-1 text-xs md:text-lg">{data.bill}</h1>
+          <h1 className="my-1 text-xs md:text-lg">{data.ordernumber}</h1>
+          <h1 className="my-1 text-xs md:text-lg">
             {data.billdate == null ? "null" : data.billdate}
           </h1>
-          <h1 className="my-1 text-lg">
+          <h1 className="my-1 text-xs md:text-lg">
             {data.duedate == null ? "null" : data.duedate}
           </h1>
-          <h1 className="my-1 text-lg">
+          <h1 className="my-1 text-xs md:text-lg">
             {data.payment == null ? "null" : data.payment}
           </h1>
         </div>
       </div>
-      <div className="overflow-x-auto w-[600px]">
-      <h1 className="font-semibold text-xl mt-4 mb-2">Items Table</h1>
+      <div className="overflow-x-auto w-[260px] md:w-[500px]">
+      <h1 className="font-semiboldtext-xs md:text-xl mt-4 mb-2">Items Table</h1>
         <table className="table-auto min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               {column.map((data, i) => (
                 <th
                   key={i}
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase "
                 >
                   {data}
                 </th>
@@ -94,12 +94,12 @@ export default function ViewSinglebills() {
             {data.items ? (
               data.items.map((record, i) => (
                 <tr key={i}>
-                  <td className="px-6 py-4 whitespace-nowrap flex items-center">
+                <td className="text-xs md:text-base whitespace-nowrap flex items-center">
                     
                     {record.name}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{record.quantity}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{record.price}</td>
+                  <td className="text-xs md:text-base whitespace-nowrap">{record.quantity}</td>
+                  <td className="text-xs md:text-base whitespace-nowrap">{record.price}</td>
                   
                 </tr>
               ))
@@ -112,8 +112,8 @@ export default function ViewSinglebills() {
           </tbody>
         </table>
         <div className="flex items-center">
-          <h1 className="font-semibold text-xl mt-4 mb-2">Total Amount</h1>
-          <h1 className="ml-10">{data.totalamount}</h1>
+        <h1 className="font-semibold text-xs md:text-xl mt-4 mb-2">Total Amount</h1>
+          <h1 className="ml-10 text-xs md:text-xl">{data.totalamount}</h1>
         </div>
       </div>
     </section>

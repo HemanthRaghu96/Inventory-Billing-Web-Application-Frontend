@@ -76,115 +76,115 @@ export default function EditItem() {
         </Link>
       </div>
       {/* First set of data */}
-      <div className="flex justify-start ">
-        <div className="mt-5 w-[320px]">
+     <div className="flex flex-col lg:flex-row justify-start ">
+        <div className="mt-5 w-[220px] md:w-[320px]">
           <div className="flex justify-between my-4">
-            <h1 className="">Name*</h1>
+            <h1 className="text-xs md:text-base">Name*</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setName(e.target.value)}
               value={name}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">SKU*</h1>
+            <h1 className="text-xs md:text-base">SKU*</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setSku(e.target.value)}
               value={sku}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Unit*</h1>
+            <h1 className="text-xs md:text-base">Unit*</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setUnit(e.target.value)}
               value={unit}
             />
           </div>
         </div>
-        <div className="size-36 bg-slate-100 m-2 mx-20">
+        {/* <div className="size-36 bg-slate-100 m-2 mx-20">
           <h1 className="flex justify-center items-center size-36">
             Browser Image
           </h1>
-        </div>
+        </div> */}
       </div>
       {/* Second set of data */}
-      <div className="flex justify-start ">
-        <div className=" mt-5 w-[320px]">
-          <div className="flex justify-between my-4">
-            <h1 className="">Dimensions</h1>
+     <div className="flex flex-col lg:flex-row justify-start ">
+        <div className=" lg:mt-5 w-[220px] md:w-[320px]">
+          <div className="flex justify-between lg:my-4">
+            <h1 className="text-xs md:text-base">Dimensions</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setDimensions(e.target.value)}
               value={dimensions}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Manufacturer</h1>
+            <h1 className="text-xs md:text-base">Manufacturer</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setManufacturer(e.target.value)}
               value={manufacturer}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">UPC </h1>
+            <h1 className="text-xs md:text-base">UPC </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setUpc(e.target.value)}
               value={upc}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">EAN </h1>
+            <h1 className="text-xs md:text-base">EAN </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setEan(e.target.value)}
               value={ean}
             />
           </div>
         </div>
-        <div className="mt-5 w-[320px] ml-20">
-          <div className="flex justify-between my-4">
-            <h1 className="">Weight</h1>
+        <div className="lg:mt-5 w-[220px] md:w-[320px] lg:ml-20">
+          <div className="flex justify-between lg:my-4">
+            <h1 className="text-xs md:text-base">Weight</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setWeight(e.target.value)}
               value={weight}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Brand</h1>
+            <h1 className="text-xs md:text-base">Brand</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setBrand(e.target.value)}
               value={brand}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">MPN </h1>
+            <h1 className="text-xs md:text-base">MPN </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setMpn(e.target.value)}
               value={mpn}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">ISBN </h1>
+            <h1 className="text-xs md:text-base">ISBN </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setIsbn(e.target.value)}
               value={isbn}
             />
@@ -195,91 +195,91 @@ export default function EditItem() {
       <h1 className="font-semibold text-xl mt-2">
         Sales & Purchase Information{" "}
       </h1>
-      <div className="flex justify-start ">
-        <div className=" mt-1 w-[320px]">
+     <div className="flex flex-col lg:flex-row justify-start ">
+        <div className=" mt-1 w-[220px] md:w-[320px]">
           <div className="flex justify-between my-4">
-            <h1 className="">Selling Price*</h1>
+            <h1 className="text-xs md:text-base">Selling Price*</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setSellingPrice(e.target.value)}
               value={name}sellingprice
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Account*</h1>
+            <h1 className="text-xs md:text-base">Account*</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setSalesAccount(e.target.value)}
               value={salesaccount}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Description </h1>
+            <h1 className="text-xs md:text-base">Description </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setSalesDescription(e.target.value)}
               value={salesdescription}
               
             />
           </div>
         </div>
-        <div className=" w-[320px] ml-20">
-          <div className="flex justify-between my-4">
-            <h1 className="">Cost Price*</h1>
+        <div className=" w-[220px] md:w-[320px] lg:ml-20">
+          <div className="flex justify-between lg:my-4">
+            <h1 className="text-xs md:text-base">Cost Price*</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setCostPrice(e.target.value)}
               value={costprice}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Account*</h1>
+            <h1 className="text-xs md:text-base">Account*</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setPurchaseAccount(e.target.value)}
               value={purchaseaccount}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Description </h1>
+            <h1 className="text-xs md:text-base">Description </h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2  h-8"
+             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setPurchaseDescription(e.target.value)}
               value={purchasedescription}
             />
           </div>
           {/* <div className="flex justify-between my-4">
-            <h1 className="">Preferred Vendor </h1>
-            <input type="text" className="border-2 rounded-md px-2  h-8" />
+            <h1 className="text-xs md:text-base">Preferred Vendor </h1>
+            <input type="text"className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]" />
           </div> */}
         </div>
       </div>
       {/* Track Inventory for this item
       <h1 className="font-semibold text-xl">Track Inventory for this item</h1>
-      <div className="flex justify-start ">
-        <div className=" mt-1 w-[320px]">
+     <div className="flex flex-col lg:flex-row justify-start ">
+        <div className=" mt-1 w-[220px] md:w-[320px]">
           <div className="flex justify-between my-4">
-            <h1 className="">Inventory Account*</h1>
-            <input type="text" className="border-2 rounded-md px-2  h-8" />
+            <h1 className="text-xs md:text-base">Inventory Account*</h1>
+            <input type="text"className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]" />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Opening Stock</h1>
-            <input type="text" className="border-2 rounded-md px-2  h-8" />
+            <h1 className="text-xs md:text-base">Opening Stock</h1>
+            <input type="text"className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]" />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="">Reorder Point </h1>
-            <input type="text" className="border-2 rounded-md px-2  h-8" />
+            <h1 className="text-xs md:text-base">Reorder Point </h1>
+            <input type="text"className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]" />
           </div>
         </div>
-        <div className="mt-5 w-[320px] ml-20">
+        <div className="mt-5 w-[220px] md:w-[320px] ml-20">
           <div className="flex justify-between my-4">
-            <h1 className="">Opening Stock Rate per Unit</h1>
+            <h1 className="text-xs md:text-base">Opening Stock Rate per Unit</h1>
             <input type="text" className="border-2 rounded-md px-2 h-10 " />
           </div>
         </div>

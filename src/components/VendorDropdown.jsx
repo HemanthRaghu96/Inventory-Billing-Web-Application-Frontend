@@ -28,7 +28,7 @@ const VendorDropdown = ({vendorname, setVendorName}) => {
       <select
         value={vendorname}
         onChange={handleChange}
-        className="border-2 rounded-md px-2 h-8 w-[200px]"
+        className="border-2 rounded-md px-2 h-5 md:h-8 w-[140px] md:w-[200px] text-xs md:text-base"
       >
         <option value="">Select a Vendor </option>
         {names.map((name) => (

@@ -20,7 +20,7 @@ const CustomerDropdown = ({customername, setCustomerName}) => {
   }, []);
 
   const handleChange = (e) => {
-    setCustomerName(e.target.value);
+    setCustomerName(e.target.value);  
   };
 
   return (
@@ -28,7 +28,7 @@ const CustomerDropdown = ({customername, setCustomerName}) => {
       <select
         value={customername}
         onChange={handleChange}
-        className="border-2 rounded-md px-2 h-8 w-[200px]"
+        className="border-2 rounded-md px-2 h-5 md:h-8 w-[140px] md:w-[200px] text-xs md:text-base"
       >
         <option value="">Select a Customer </option>
         {names.map((name) => (

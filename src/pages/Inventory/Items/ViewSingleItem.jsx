@@ -41,11 +41,11 @@ export default function ViewSingleItem() {
             </button>
           </Link>
           <Link to={"/items"}>
-            <HiMiniXMark className="mr-1 ml-20 size-7 text-red-500" />
+            <HiMiniXMark className="mr-1 md:ml-20 size-7 text-red-500" />
           </Link>
         </div>
       </div>
-      <div className="flex">
+      <div className="flex mt-3">
         <div className="py-1 my-1 w-40">
           <h1 className="my-1 text-lg">Item Name</h1>
           <h1 className="my-1 text-lg">SKU</h1>
@@ -72,9 +72,7 @@ export default function ViewSingleItem() {
             {data.isbn == null ? "null" : data.isbn}
           </h1>
         </div>
-        <div>
-          <img src={data.poster} alt={data.name} className="size-40 border" />
-        </div>
+        
       </div>
       <div className="mt-5">
         <h1 className="font-semibold text-lg">Sales Information</h1>

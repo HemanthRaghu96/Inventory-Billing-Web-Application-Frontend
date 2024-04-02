@@ -27,7 +27,7 @@ export default function ViewSingleSalesOrder() {
   return (
     <section className="ml-14 mt-16  md:ml-56 h-screen">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
-        <h1 className="font-semibold text-xl">Sales Order Details</h1>
+        <h1 className="font-semibold text-xs md:text-xl">Sales Order Details</h1>
         <div className="flex">
           <Link to={`/salesorders/salesordersitem/${salesordersId}`}>
             <button className="px-2 flex items-center bg-buttonColor text-white rounded-md mx-2">
@@ -45,39 +45,39 @@ export default function ViewSingleSalesOrder() {
             </button>
           </Link>
           <Link to={"/salesorders"}>
-            <HiMiniXMark className="mr-1 ml-20 size-7 text-red-500" />
+            <HiMiniXMark className="mr-1 md:ml-20 size-7 text-red-500" />
           </Link>
         </div>
       </div>
       <div className="flex ">
         <div className="py-1 my-1 w-[200px]">
-          <h1 className="my-1 text-lg">Customer Name</h1>
-          <h1 className="my-1 text-lg">Sales Order Number</h1>
-          <h1 className="my-1 text-lg">Sales Order Date</h1>
-          <h1 className="my-1 text-lg">Shipment Date</h1>
+           <h1 className="my-1 text-xs md:text-lg">Customer Name</h1>
+           <h1 className="my-1 text-xs md:text-lg">Sales Order Number</h1>
+           <h1 className="my-1 text-xs md:text-lg">Sales Order Date</h1>
+           <h1 className="my-1 text-xs md:text-lg">Shipment Date</h1>
         </div>
         <div className="py-1 my-1  w-40">
-          <h1 className="my-1 text-lg">
+           <h1 className="my-1 text-xs md:text-lg">
             {data.customername == null ? "null" : data.customername}
           </h1>
-          <h1 className="my-1 text-lg">{data.salesorder}</h1>
-          <h1 className="my-1 text-lg">
+           <h1 className="my-1 text-xs md:text-lg">{data.salesorder}</h1>
+           <h1 className="my-1 text-xs md:text-lg">
             {data.date == null ? "null" : data.date}
           </h1>
-          <h1 className="my-1 text-lg">
+           <h1 className="my-1 text-xs md:text-lg">
             {data.shipmentdate == null ? "null" : data.shipmentdate}
           </h1>
         </div>
       </div>
-      <div className="overflow-x-auto w-[600px]">
-      <h1 className="font-semibold text-xl mt-4 mb-2">Items Table</h1>
+      <div className="overflow-x-auto w-[260px] md:w-[500px]">
+      <h1 className="font-semibold text-xs md:text-xl mt-4 mb-2">Items Table</h1>
         <table className="table-auto min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               {column.map((data, i) => (
                 <th
                   key={i}
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase "
                 >
                   {data}
                 </th>
@@ -88,12 +88,12 @@ export default function ViewSingleSalesOrder() {
             {data.items ? (
               data.items.map((record, i) => (
                 <tr key={i}>
-                  <td className="px-6 py-4 whitespace-nowrap flex items-center">
+                  <td className="text-xs md:text-base whitespace-nowrap flex items-center">
                     
                     {record.name}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{record.quantity}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{record.price}</td>
+                  </td> 
+                  <td className="text-xs md:text-base whitespace-nowrap">{record.quantity}</td>
+                  <td className="text-xs md:text-base whitespace-nowrap">{record.price}</td>
                   
                 </tr>
               ))
@@ -106,8 +106,8 @@ export default function ViewSingleSalesOrder() {
           </tbody>
         </table>
         <div className="flex items-center">
-          <h1 className="font-semibold text-xl mt-4 mb-2">Total Amount</h1>
-          <h1 className="ml-10">{data.totalamount}</h1>
+          <h1 className="font-semibold text-xs md:text-xl mt-4 mb-2">Total Amount</h1>
+          <h1 className="ml-10 text-xs md:text-xl">{data.totalamount}</h1>
         </div>
       </div>
     </section>

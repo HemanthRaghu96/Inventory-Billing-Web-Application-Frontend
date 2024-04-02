@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { API } from "../../../api/api";
 import axios from "axios";
 import VendorDropdown from "../../../components/VendorDropdown";
+import { MdDelete } from "react-icons/md";
 
 export default function Editbills() {
   const { billsId } = useParams();
@@ -88,63 +89,63 @@ console.log(items)
   return (
     <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
-        <h1 className="font-semibold text-xl"> Bill Detailes</h1>
+        <h1 className="font-semibold md:text-xl"> Bill Detailes</h1>
         <Link to="/bills">
           <HiMiniXMark className="mr-1 size-7 text-red-500" />
         </Link>
       </div>
       {/* Sales Order Form */}
       <div className="flex justify-start">
-        <div className="mt-5 w-[420px]">
+        <div className="mt-5 w-[230px] md:w-[350px]">
           <div className="flex justify-between my-4">
-            <h1>Vendor Name</h1>
+            <h1 className="text-xs md:text-base">Vendor Name</h1>
             <VendorDropdown
               vendorname={vendorname}
               setVendorName={setVendorName}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1>Bill Number</h1>
+            <h1 className="text-xs md:text-base">Bill Number</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setBill(e.target.value)}
               value={bill}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1> Order Number</h1>
+            <h1 className="text-xs md:text-base"> Order Number</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setOrderNumber(e.target.value)}
               value={ordernumber}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1> Bill Date</h1>
+            <h1 className="text-xs md:text-base"> Bill Date</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setBilldate(e.target.value)}
               value={billdate}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1>Due Date</h1>
+            <h1 className="text-xs md:text-base">Due Date</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setDuedate(e.target.value)}
               value={duedate}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1>Payment Status</h1>
+            <h1 className="text-xs md:text-base">Payment Status</h1>
             <select
         value={payment}
         onChange={(e)=>setPayment(e.target.value)}
-        className="border-2 rounded-md px-2 h-8 w-[200px]"
+        className="border-2 rounded-md px-2 h-5 md:h-8 w-[140px] md:w-[200px] text-xs md:text-base"
       >
         <option value="">Select a payment </option>
         {status.map((name,index) => (
@@ -158,14 +159,14 @@ console.log(items)
       </div>
       {/* Item Table */}
       <div className="my-4">
-        <h1 className="font-semibold text-lg">Item Table</h1>
+        <h1 className="font-semibold md:text-xl">Item Table</h1>
         <table className="w-full mt-4">
           <thead className="bg-gray-100">
             <tr >
-              <th>Item Name</th>
-              <th>Quantity</th>
-              <th>Discount</th>
-              <th>Price</th>
+              <th className="font-semibold text-xs md:text-lg">Item Name</th>
+              <th className="font-semibold text-xs md:text-lg">Quantity</th>
+              <th className="font-semibold text-xs md:text-lg">Discount</th>
+              <th className="font-semibold text-xs md:text-lg">Price</th>
             </tr>
           </thead>
           <tbody>
@@ -178,7 +179,7 @@ console.log(items)
                     onChange={(e) =>
                       handleItemChange(index, "name", e.target.value)
                     }
-                    className="border-2 rounded-md px-2 h-8 w-full"
+                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
                   />
                 </td>
                 <td>
@@ -192,7 +193,7 @@ console.log(items)
                         parseInt(e.target.value)
                       )
                     }
-                    className="border-2 rounded-md px-2 h-8 w-full"
+                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
                   />
                 </td>
                 <td>
@@ -206,7 +207,7 @@ console.log(items)
                         parseInt(e.target.value)
                       )
                     }
-                    className="border-2 rounded-md px-2 h-8 w-full"
+                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
                   />
                 </td>
                 <td>
@@ -220,7 +221,7 @@ console.log(items)
                         parseFloat(e.target.value)
                       )
                     }
-                    className="border-2 rounded-md px-2 h-8 w-full"
+                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
                   />
                 </td>
                 <td>
@@ -228,7 +229,7 @@ console.log(items)
                     onClick={() => deleteItem(index)}
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
                   >
-                    Delete
+                   <MdDelete />
                   </button>
                 </td>
               </tr>
@@ -243,9 +244,9 @@ console.log(items)
         </button>
       </div>
 <div className="">
-<h1 className="font-semibold text-lg">Sub Total</h1>
-<h1 className="flex">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-8 ml-10" onChange={(e)=>setShipmentingCharges(e.target.value)} value={shipmentingcharges}/></span></h1>
-<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold">{totalamount}</span></h1>
+<h1 className="font-semibold md:text-xl">Sub Total</h1>
+<h1 className="flex text-xs md:text-base">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-5 md:h-8 ml-5 md:ml-10 w-[140px]" onChange={(e)=>setShipmentingCharges(e.target.value)} value={shipmentingcharges}/></span></h1>
+<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold text-xs md:text-base">{totalamount}</span></h1>
 
 
 </div>

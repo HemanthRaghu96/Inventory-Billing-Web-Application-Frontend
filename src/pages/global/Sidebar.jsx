@@ -82,8 +82,8 @@ export default function Sidebar() {
       <section
         className={
           open
-            ? "fixed top-12 h-screen  w-[45px] overflow-y-auto z-20 border-r bg-sidebarColor"
-            : "fixed top-12 h-screen  w-[200px] overflow-y-auto z-20 border-r bg-sidebarColor"
+            ? "fixed top-12 h-full  w-[45px] overflow-y-auto z-20 border-r bg-sidebarColor"
+            : "fixed top-12 h-full  w-[200px] overflow-y-auto z-20 border-r bg-sidebarColor"
         }
       >
         <div className="text-black">

@@ -29,7 +29,7 @@ export default function Customers() {
   };
 
   return (
-    <section className="ml-14 mt-16 md:ml-56 h-screen">
+    <section className="ml-14 mt-16 md:ml-56 h-full">
       <div className="flex justify-between mr-5 md:mr-10 ld:mr-32">
         <h1 className="font-semibold text-xl mx-4">All Customers</h1>
         <Link to={"/customers/addcustomers"}>

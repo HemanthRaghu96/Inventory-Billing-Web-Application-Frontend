@@ -26,7 +26,7 @@ export default function ViewSingleVendors() {
   return (
     <section className="ml-14 mt-16  md:ml-56 h-screen">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
-        <h1 className="font-semibold text-xl">Vendor Details</h1>
+        <h1 className="font-semibold lg:text-xl">Vendor Details</h1>
         <div className="flex">
           <Link to={`/vendors/vendorsdetails/${vendorsId}`}>
             <button className="px-2 flex items-center bg-buttonColor text-white rounded-md mx-2">
@@ -44,66 +44,66 @@ export default function ViewSingleVendors() {
             </button>
           </Link>
           <Link to={"/vendors"}>
-            <HiMiniXMark className="mr-1 ml-20 size-7 text-red-500" />
+            <HiMiniXMark className="mr-1 lg:ml-20 size-7 text-red-500" />
           </Link>
         </div>
       </div>
       <div className="flex">
-        <div className="py-1 my-1 w-40">
-          <h1 className="my-1 text-lg">Name</h1>
-          <h1 className="my-1 text-lg">Company Name</h1>
-          <h1 className="my-1 text-lg">Email</h1>
-          <h1 className="my-1 text-lg">Phone Number</h1>
-          <h1 className="my-1 text-lg">Pan</h1>
+        <div className="py-1 my-1  w-28">
+           <h1 className="my-1 text-xs md:text-lg">Name</h1>
+           <h1 className="my-1 text-xs md:text-lg">Company Name</h1>
+           <h1 className="my-1 text-xs md:text-lg">Email</h1>
+           <h1 className="my-1 text-xs md:text-lg">Phone Number</h1>
+           <h1 className="my-1 text-xs md:text-lg">Pan</h1>
         </div>
-        <div className="py-1 my-1  w-40">
-          <h1 className="my-1 text-lg">{data.displayname}</h1>
-          <h1 className="my-1 text-lg">
+        <div className="py-1 my-1   w-28">
+           <h1 className="my-1 text-xs md:text-lg">{data.displayname}</h1>
+           <h1 className="my-1 text-xs md:text-lg">
             {data.companyname == null ? "null" : data.companyname}
           </h1>
-          <h1 className="my-1 text-lg">
+           <h1 className="my-1 text-xs md:text-lg">
             {data.email == null ? "null" : data.email}
           </h1>
-          <h1 className="my-1 text-lg">
+           <h1 className="my-1 text-xs md:text-lg">
             {data.phonenumber == null ? "null" : data.phonenumber}
           </h1>
-          <h1 className="my-1 text-lg">
+           <h1 className="my-1 text-xs md:text-lg">
             {data.pan == null ? "null" : data.pan}
           </h1>
         </div>
       </div>
-     <div className="flex">
+     <div className="flex flex-col lg:flex-row">
      <div className="mt-5">
         <h1 className="font-semibold text-lg">Billing Address</h1>
         <div className="flex">
-          <div className="py-1 my-1 w-40">
-            <h1 className="my-1 text-lg">Address</h1>
-            <h1 className="my-1 text-lg"> City</h1>
-            <h1 className="my-1 text-lg"> Country</h1>
-            <h1 className="my-1 text-lg"> Pincode</h1>
+          <div className="py-1 my-1  w-28">
+             <h1 className="my-1 text-xs md:text-lg">Address</h1>
+             <h1 className="my-1 text-xs md:text-lg"> City</h1>
+             <h1 className="my-1 text-xs md:text-lg"> Country</h1>
+             <h1 className="my-1 text-xs md:text-lg"> Pincode</h1>
           </div>
           <div className="py-1 my-1 ">
-            <h1 className="my-1 text-lg">{data.billingaddress}</h1>
-            <h1 className="my-1 text-lg">{data.billingcity}</h1>
-            <h1 className="my-1 text-lg">{data.billingcountry}</h1>
-            <h1 className="my-1 text-lg">{data.billingpincode}</h1>
+             <h1 className="my-1 text-xs md:text-lg">{data.billingaddress}</h1>
+             <h1 className="my-1 text-xs md:text-lg">{data.billingcity}</h1>
+             <h1 className="my-1 text-xs md:text-lg">{data.billingcountry}</h1>
+             <h1 className="my-1 text-xs md:text-lg">{data.billingpincode}</h1>
           </div>
         </div>
       </div>
-      <div className="mt-5 mx-20">
+      <div className="mt-5 lg:mx-20">
         <h1 className="font-semibold text-lg">Shipping Address</h1>
         <div className="flex">
-          <div className="py-1 my-1 w-40">
-            <h1 className="my-1 text-lg">Address</h1>
-            <h1 className="my-1 text-lg"> City</h1>
-            <h1 className="my-1 text-lg"> Country</h1>
-            <h1 className="my-1 text-lg"> Pincode</h1>
+          <div className="py-1 my-1  w-28">
+             <h1 className="my-1 text-xs md:text-lg">Address</h1>
+             <h1 className="my-1 text-xs md:text-lg"> City</h1>
+             <h1 className="my-1 text-xs md:text-lg"> Country</h1>
+             <h1 className="my-1 text-xs md:text-lg"> Pincode</h1>
           </div>
           <div className="py-1 my-1 ">
-            <h1 className="my-1 text-lg">{data.shippingaddress}</h1>
-            <h1 className="my-1 text-lg">{data.shippingcity}</h1>
-            <h1 className="my-1 text-lg">{data.shippingcountry}</h1>
-            <h1 className="my-1 text-lg">{data.shippingpincode}</h1>
+             <h1 className="my-1 text-xs md:text-lg">{data.shippingaddress}</h1>
+             <h1 className="my-1 text-xs md:text-lg">{data.shippingcity}</h1>
+             <h1 className="my-1 text-xs md:text-lg">{data.shippingcountry}</h1>
+             <h1 className="my-1 text-xs md:text-lg">{data.shippingpincode}</h1>
           </div>
         </div>
       </div>

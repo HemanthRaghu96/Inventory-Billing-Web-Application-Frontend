@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../../api/api";
 import axios from "axios";
 import CustomerDropdown from "../../../components/CustomerDropdown";
+import { MdDelete } from "react-icons/md";
 
 export default function AddInvoices() {
   const navigate = useNavigate();
@@ -72,56 +73,56 @@ export default function AddInvoices() {
       </div>
       {/* Sales Order Form */}
       <div className="flex justify-start">
-        <div className="mt-5 w-[420px]">
+        <div className="mt-5 w-[250px] md:w-[400px]">
           <div className="flex justify-between my-4">
-            <h1>Customer Name</h1>
+             <h1 className="text-xs md:text-base">Customer Name</h1>
             <CustomerDropdown
               customername={customername}
               setCustomerName={setCustomerName}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1>Invoice Number</h1>
+             <h1 className="text-xs md:text-base">Invoice Number</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+                className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setInvoice(e.target.value)}
               value={invoice}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1>Sales Order Number</h1>
+             <h1 className="text-xs md:text-base">Sales Order Number</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+                className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setOrderNumber(e.target.value)}
               value={ordernumber}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1> Invoice Date</h1>
+             <h1 className="text-xs md:text-base"> Invoice Date</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+                className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setInvoicedate(e.target.value)}
               value={invoicedate}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1>Due Date</h1>
+             <h1 className="text-xs md:text-base">Due Date</h1>
             <input
               type="text"
-              className="border-2 rounded-md px-2 h-8"
+                className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setDuedate(e.target.value)}
               value={duedate}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1>Payment Status</h1>
+             <h1 className="text-xs md:text-base">Payment Status</h1>
             <select
         value={payment}
         onChange={(e)=>setPayment(e.target.value)}
-        className="border-2 rounded-md px-2 h-8 w-[200px]"
+        className="border-2 rounded-md px-2 h-5 md:h-8 w-[140px] md:w-[200px] text-xs md:text-base"
       >
         <option value="">Select a payment </option>
         {data.map((name,index) => (
@@ -135,14 +136,14 @@ export default function AddInvoices() {
       </div>
       {/* Item Table */}
       <div className="my-4">
-        <h1 className="font-semibold text-lg">Item Table</h1>
+        <h1 className="font-semibold md:text-lg">Item Table</h1>
         <table className="w-full mt-4">
           <thead className="bg-gray-100">
             <tr >
-              <th>Item Name</th>
-              <th>Quantity</th>
-              <th>Discount</th>
-              <th>Price</th>
+              <th className="font-semibold text-xs md:text-lg">Item Name</th>
+              <th className="font-semibold text-xs md:text-lg">Quantity</th>
+              <th className="font-semibold text-xs md:text-lg">Discount</th>
+              <th className="font-semibold text-xs md:text-lg">Price</th>
             </tr>
           </thead>
           <tbody>
@@ -155,7 +156,7 @@ export default function AddInvoices() {
                     onChange={(e) =>
                       handleItemChange(index, "name", e.target.value)
                     }
-                    className="border-2 rounded-md px-2 h-8 w-full"
+                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
                   />
                 </td>
                 <td>
@@ -169,7 +170,7 @@ export default function AddInvoices() {
                         parseInt(e.target.value)
                       )
                     }
-                    className="border-2 rounded-md px-2 h-8 w-full"
+                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
                   />
                 </td>
                 <td>
@@ -183,7 +184,7 @@ export default function AddInvoices() {
                         parseInt(e.target.value)
                       )
                     }
-                    className="border-2 rounded-md px-2 h-8 w-full"
+                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
                   />
                 </td>
                 <td>
@@ -197,7 +198,7 @@ export default function AddInvoices() {
                         parseFloat(e.target.value)
                       )
                     }
-                    className="border-2 rounded-md px-2 h-8 w-full"
+                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
                   />
                 </td>
                 <td>
@@ -205,7 +206,7 @@ export default function AddInvoices() {
                     onClick={() => deleteItem(index)}
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
                   >
-                    Delete
+                   <MdDelete />
                   </button>
                 </td>
               </tr>
@@ -220,10 +221,10 @@ export default function AddInvoices() {
         </button>
       </div>
 <div className="">
-<h1 className="font-semibold text-lg">Sub Total</h1>
-<h1 className="flex">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-8 ml-10" onChange={(e)=>setShipmentingCharges(e.target.value)}/></span></h1>
+<h1 className="font-semibold  md:text-lg">Sub Total</h1>
+<h1 className="flex text-xs md:text-base">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-5 md:h-8 ml-5 md:ml-10 w-[140px]" onChange={(e)=>setShipmentingCharges(e.target.value)}/></span></h1>
 
-<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold">{totalamount}</span></h1>
+<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold text-xs md:text-base">{totalamount}</span></h1>
 
 
 </div>
