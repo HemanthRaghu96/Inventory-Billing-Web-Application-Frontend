@@ -9,10 +9,13 @@ import { API } from "../../../api/api";
 
 export default function ViewSinglebills() {
   const [data, setData] = useState([]);
+  const [total, setTotal] = useState("");
+  const [itemData, setItemData] = useState([]);
   const { billsId } = useParams();
   const column = ["NAME", "QUANTITY", "PRICE"];
   useEffect(() => {
     fetchSelecteData();
+    fetchItemData();
   }, []);
   const fetchSelecteData = async () => {
     const response = await axios.get(
@@ -20,6 +23,23 @@ export default function ViewSinglebills() {
     );
     console.log(response.data.selectedBills[0]);
     setData(response.data.selectedBills[0]);
+  };
+  const fetchItemData = async () => {
+    try {
+      const response = await axios.get(`${API}getAllPurchaseorder`);
+      const allPurchaseorders = response.data.allPurchaseorders;
+      const filteredOrder = allPurchaseorders.find(
+        (record) => record.salesorder === data.ordernumber
+      );
+      if (filteredOrder) {
+        setItemData(filteredOrder.items);
+        setTotal(filteredOrder.totalamount)
+      } else {
+        setItemData([]); // No items found for the order
+      }
+    } catch (error) {
+      console.error("Error fetching item data:", error);
+    }
   };
   const handleDelete = async () => {
     await axios.delete(`${API}deletebill/${billsId}`);
@@ -51,7 +71,6 @@ export default function ViewSinglebills() {
       </div>
       <div className="flex ">
         <div className="py-1 my-1 w-[200px]">
-          <h1 className="my-1 text-xs md:text-lg">Vendor Name</h1>
           <h1 className="my-1 text-xs md:text-lg">Bill</h1>
           <h1 className="my-1 text-xs md:text-lg"> Order Number</h1>
           <h1 className="my-1 text-xs md:text-lg">Bill Date</h1>
@@ -59,9 +78,7 @@ export default function ViewSinglebills() {
           <h1 className="my-1 text-xs md:text-lg">Payment Status</h1>
         </div>
         <div className="py-1 my-1  w-40">
-          <h1 className="my-1 text-xs md:text-lg">
-            {data.vendorname == null ? "null" : data.vendorname}
-          </h1>
+         
           <h1 className="my-1 text-xs md:text-lg">{data.bill}</h1>
           <h1 className="my-1 text-xs md:text-lg">{data.ordernumber}</h1>
           <h1 className="my-1 text-xs md:text-lg">
@@ -91,8 +108,8 @@ export default function ViewSinglebills() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {data.items ? (
-              data.items.map((record, i) => (
+          {itemData.length > 0 ? (
+              itemData.map((record, i) => (
                 <tr key={i}>
                 <td className="text-xs md:text-base whitespace-nowrap flex items-center">
                     
@@ -113,7 +130,7 @@ export default function ViewSinglebills() {
         </table>
         <div className="flex items-center">
         <h1 className="font-semibold text-xs md:text-xl mt-4 mb-2">Total Amount</h1>
-          <h1 className="ml-10 text-xs md:text-xl">{data.totalamount}</h1>
+          <h1 className="ml-10 text-xs md:text-xl">{total}</h1>
         </div>
       </div>
     </section>

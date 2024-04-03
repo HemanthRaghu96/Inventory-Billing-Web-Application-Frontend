@@ -11,9 +11,7 @@ export default function BillsList() {
     "BILL",
     "BILL DATE",
     "PURCHASE ORDER NUMBER",
-    "VENDOR NAME",
     "STATUS",
-    "AMOUNT",
   ];
   useEffect(() => {
     fetchItemData();
@@ -75,13 +73,7 @@ export default function BillsList() {
                   {record.ordernumber}  
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {record.vendorname}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
                   {record.payment}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                {record.totalamount}
                 </td>
               </tr>
             ))}
