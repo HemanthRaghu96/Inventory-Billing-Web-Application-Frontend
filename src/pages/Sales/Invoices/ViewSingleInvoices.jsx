@@ -9,18 +9,37 @@ import { API } from "../../../api/api";
 
 export default function ViewSingleInvoices() {
   const [data, setData] = useState([]);
+  const [total, setTotal] = useState("");
+  const [itemData, setItemData] = useState([]);
   const { invoicesId } = useParams();
   const column = ["NAME", "QUANTITY", "PRICE"];
+  console.log(itemData)
   useEffect(() => {
     fetchSelecteData();
-  }, []);
+    fetchItemData();
+  }, [itemData]);
   const fetchSelecteData = async () => {
-    const response = await axios.get(
-      `${API}getselectedinvoice/${invoicesId}`
-    );
-    console.log(response.data.selectedInvoices[0]);
+    const response = await axios.get(`${API}getselectedinvoice/${invoicesId}`);
     setData(response.data.selectedInvoices[0]);
   };
+  const fetchItemData = async () => {
+    try {
+      const response = await axios.get(`${API}getallsalesorder`);
+      const allSalesorders = response.data.allSalesorders;
+      const filteredOrder = allSalesorders.find(
+        (record) => record.salesorder === data.ordernumber
+      );
+      if (filteredOrder) {
+        setItemData(filteredOrder.items);
+        setTotal(filteredOrder.totalamount)
+      } else {
+        setItemData([]); // No items found for the order
+      }
+    } catch (error) {
+      console.error("Error fetching item data:", error);
+    }
+  };
+
   const handleDelete = async () => {
     await axios.delete(`${API}deleteinvoice/${invoicesId}`);
   };
@@ -75,8 +94,11 @@ export default function ViewSingleInvoices() {
           </h1>
         </div>
       </div>
+      {/* Item Table */}
       <div className="overflow-x-auto w-[260px] md:w-[500px]">
-      <h1 className="font-semibold text-xs md:text-xl mt-4 mb-2">Items Table</h1>
+        <h1 className="font-semibold text-xs md:text-xl mt-4 mb-2">
+          Items Table
+        </h1>
         <table className="table-auto min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
@@ -91,16 +113,18 @@ export default function ViewSingleInvoices() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {data.items ? (
-              data.items.map((record, i) => (
+            {itemData.length > 0 ? (
+              itemData.map((record, i) => (
                 <tr key={i}>
-                <td className="text-xs md:text-base whitespace-nowrap flex items-center">
-                    
+                  <td className="text-xs md:text-base whitespace-nowrap flex items-center">
                     {record.name}
                   </td>
-                  <td className="text-xs md:text-base whitespace-nowrap">{record.quantity}</td>
-                  <td className="text-xs md:text-base whitespace-nowrap">{record.price}</td>
-                  
+                  <td className="text-xs md:text-base whitespace-nowrap">
+                    {record.quantity}
+                  </td>
+                  <td className="text-xs md:text-base whitespace-nowrap">
+                    {record.price}
+                  </td>
                 </tr>
               ))
             ) : (
@@ -108,12 +132,13 @@ export default function ViewSingleInvoices() {
                 <td colSpan="5">No items available</td>
               </tr>
             )}
-              
           </tbody>
         </table>
         <div className="flex items-center">
-        <h1 className="font-semibold text-xs md:text-xl mt-4 mb-2">Total Amount</h1>
-          <h1 className="ml-10 text-xs md:text-xl">{data.totalamount}</h1>
+          <h1 className="font-semibold text-xs md:text-xl mt-4 mb-2">
+            Total Amount
+          </h1>
+          <h1 className="ml-10 text-xs md:text-xl">{total}</h1>
         </div>
       </div>
     </section>

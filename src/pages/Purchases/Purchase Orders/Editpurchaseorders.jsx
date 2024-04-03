@@ -133,7 +133,7 @@ console.log(items)
     <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semibold md:text-xl">New Purchase Order</h1>
-        <Link to="/sales-orders">
+        <Link to="/purchaseorders">
           <HiMiniXMark className="mr-1 size-7 text-red-500" />
         </Link>
       </div>

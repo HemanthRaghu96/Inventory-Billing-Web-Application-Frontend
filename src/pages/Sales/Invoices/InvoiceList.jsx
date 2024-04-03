@@ -11,9 +11,7 @@ export default function InvoiceList() {
     "INVOICE",
     "INVOICE DATE",
     "SALES ORDER NUMBER",
-    "CUSTOMER NAME",
     "STATUS",
-    "AMOUNT",
   ];
   useEffect(() => {
     fetchItemData();
@@ -75,13 +73,7 @@ export default function InvoiceList() {
                   {record.ordernumber}  
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {record.customername}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
                   {record.payment}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                {record.totalamount}
                 </td>
               </tr>
             ))}
