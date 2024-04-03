@@ -70,7 +70,6 @@ export default function ViewSingleInvoices() {
       </div>
       <div className="flex ">
         <div className="py-1 my-1 w-[200px]">
-          <h1 className="my-1 text-xs md:text-lg">Customer Name</h1>
           <h1 className="my-1 text-xs md:text-lg">Invoice</h1>
           <h1 className="my-1 text-xs md:text-lg">Sales Order Number</h1>
           <h1 className="my-1 text-xs md:text-lg">Invoice Date</h1>
