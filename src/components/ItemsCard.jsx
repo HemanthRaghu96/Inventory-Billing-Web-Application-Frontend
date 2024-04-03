@@ -10,7 +10,7 @@ export default function ItemsCard({ data }) {
         <h1 className="font-semibold mt-3 px-1">{data.name}</h1>
         <p className="mx-1 px-1"><span className="font-medium">SKU : </span> {data.sku}</p>
         <p className="mt-1 px-1"><span className="font-medium">Selling price : </span>Rs.{data.sellingprice}</p>
-        <p className="mx-1 px-1"><span className="font-medium">Cost Price : </span>Rs.{data.costprice}</p>
+        <p className="mx-1 px-1"><span className="font-medium">Quantity : </span>{data.unit}</p>
       </div>
       </Link>
     </section>

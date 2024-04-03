@@ -5,6 +5,7 @@ import { API } from "../../../api/api";
 import axios from "axios";
 import CustomerDropdown from "../../../components/CustomerDropdown";
 import { MdDelete } from "react-icons/md";
+import ItemDropdown from "../../../components/ItemDropdown";
 
 export default function AddSalesOrder() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function AddSalesOrder() {
   const [totalamount, setTotalAmount] = useState("");
   const [shipmentingcharges, setShipmentingCharges] = useState("");
   const [customernote, setCustomerNote] = useState("");
-console.log(items)
+  console.log(items);
   const handleSave = async () => {
     const salesorderData = {
       customername,
@@ -31,6 +32,13 @@ console.log(items)
     try {
       const response = await axios.post(`${API}addsalesorder`, salesorderData);
       console.log(response.data); // handle response as needed
+      const updatedItemsPromises = items.map(async (item) => {
+        const { itemId, quantity } = item;
+        const itemDetails = await fetchItemDetails(itemId);
+        const editedData = { unit: itemDetails.unit - quantity };
+        await axios.put(`${API}edititems/${itemId}`, editedData);
+      });
+      await Promise.all(updatedItemsPromises); 
       navigate("/salesorders"); // navigate to sales orders page on successful save
     } catch (error) {
       console.error("Error adding sales order:", error);
@@ -46,19 +54,59 @@ console.log(items)
     updatedItems.splice(index, 1);
     setItems(updatedItems);
   };
+  const fetchItemDetails = async (itemId) => {
+    try {
+      const response = await axios.get(`${API}getselecteditems/${itemId}`);
+      console.log(response.data.selectedItems[0]);
+      return response.data.selectedItems[0]; // Assuming the API returns item details in the response data
+    } catch (error) {
+      console.error("Error fetching item details:", error);
+      throw error; // Propagate the error to the caller
+    }
+  };
+
   // Function to handle changes in item details
-  const handleItemChange = (index, field, value) => {
+  const handleItemChange = async (index, field, value) => {
     const updatedItems = [...items];
     updatedItems[index][field] = value;
-    setItems(updatedItems);
+
+    // Handle changes related to the selected item (such as fetching details)
+    if (field === "itemId" || field === "quantity") {
+      try {
+        const itemId = updatedItems[index].itemId; // Get the itemId from the item object
+        const itemDetails = await fetchItemDetails(itemId);
+        if (field === "itemId") {
+          updatedItems[index] = {
+            ...updatedItems[index],
+            name: itemDetails.name,
+            quantity: 1, // Update quantity based on fetched details
+            price: itemDetails.sellingprice, // Update price based on fetched details
+          };
+        } else if (field === "quantity") {
+          const totalPrice = itemDetails.sellingprice * value;
+          updatedItems[index] = {
+            ...updatedItems[index],
+            price: totalPrice.toFixed(2), // Update price based on quantity and fetched details
+          }; 
+        }
+
+        setItems(updatedItems);
+      } catch (error) {
+        console.error("Error fetching item details:", error);
+        // Handle error or display a message to the user
+      }
+    }
   };
+
   useEffect(() => {
     let calculatedTotal = 0;
     items.forEach((item) => {
-      calculatedTotal += item.price;
+      calculatedTotal += parseFloat(item.price); // Convert item.price to float
     });
-    setTotalAmount(calculatedTotal+Number(shipmentingcharges));
-  }, [items,shipmentingcharges]);
+    // Assuming shipmentingcharges is already a number, no need for Number()
+    setTotalAmount((calculatedTotal + Number(shipmentingcharges)).toFixed(2));
+  }, [items, shipmentingcharges]);
+
   return (
     <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
@@ -111,7 +159,7 @@ console.log(items)
         <h1 className="font-semibold md:text-lg">Item Table</h1>
         <table className="w-full mt-4">
           <thead className="bg-gray-100">
-            <tr >
+            <tr>
               <th className="font-semibold text-xs md:text-lg">Item Name</th>
               <th className="font-semibold text-xs md:text-lg">Quantity</th>
               <th className="font-semibold text-xs md:text-lg">Discount</th>
@@ -122,13 +170,11 @@ console.log(items)
             {items.map((item, index) => (
               <tr key={index}>
                 <td>
-                  <input
-                    type="text"
-                    value={item.name}
-                    onChange={(e) =>
-                      handleItemChange(index, "name", e.target.value)
-                    }
-                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
+                  <ItemDropdown
+                    selectedItemId={item.itemId} // Pass the selected item's ID to the dropdown
+                    handleItemChange={(selectedItemId) =>
+                      handleItemChange(index, "itemId", selectedItemId)
+                    } // Handle item selection change
                   />
                 </td>
                 <td>
@@ -178,7 +224,7 @@ console.log(items)
                     onClick={() => deleteItem(index)}
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
                   >
-                   <MdDelete />
+                    <MdDelete />
                   </button>
                 </td>
               </tr>
@@ -192,13 +238,25 @@ console.log(items)
           Add Item
         </button>
       </div>
-<div className="">
-<h1 className="font-semibold md:text-lg">Sub Total</h1>
-<h1 className="flex text-xs md:text-base">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-5 md:h-8 ml-5 md:ml-10 w-[140px]" onChange={(e)=>setShipmentingCharges(e.target.value)}/></span></h1>
-<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold text-xs md:text-base">{totalamount}</span></h1>
-
-
-</div>
+      <div className="">
+        <h1 className="font-semibold md:text-lg">Sub Total</h1>
+        <h1 className="flex text-xs md:text-base">
+          Shipping Charges{" "}
+          <span>
+            <input
+              type="text"
+              className="border-2 rounded-md px-2 h-5 md:h-8 ml-5 md:ml-10 w-[140px]"
+              onChange={(e) => setShipmentingCharges(e.target.value)}
+            />
+          </span>
+        </h1>
+        <h1 className="flex mt-2 font-semibold">
+          Total{" "}
+          <span className="ml-32 font-semibold text-xs md:text-base">
+            {totalamount}
+          </span>
+        </h1>
+      </div>
       {/* Buttons for Save and Cancel */}
       <div className="flex my-4">
         <button

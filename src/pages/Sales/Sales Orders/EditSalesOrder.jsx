@@ -5,6 +5,7 @@ import { API } from "../../../api/api";
 import axios from "axios";
 import CustomerDropdown from "../../../components/CustomerDropdown";
 import { MdDelete } from "react-icons/md";
+import ItemDropdown from "../../../components/ItemDropdown";
 
 export default function EditSalesOrder() {
   const { salesordersId } = useParams();
@@ -37,7 +38,7 @@ export  function EditSalesOrders({ data, salesordersId }) {
   const [date, setDate] = useState(data.date);
   const [shipmentdate, setShipmentDate] = useState(data.shipmentdate);
   const [items, setItems] = useState(data.items || []);
-  const [totalamount, setTotalamount] = useState("");
+  const [totalamount, setTotalamount] = useState(data.totalamount);
   const [shipmentingcharges, setShipmentingCharges] = useState(data.shipmentingcharges);
   const [customernote, setCustomerNote] = useState(data.customernote);
 console.log(items)
@@ -55,6 +56,13 @@ console.log(items)
     try {
       const response = await axios.put(`${API}editsalesorder/${salesordersId}`, salesorderData);
       console.log(response.data); // handle response as needed
+      const updatedItemsPromises = items.map(async (item) => {
+        const { itemId, quantity } = item;
+        const itemDetails = await fetchItemDetails(itemId);
+        const editedData = { unit: itemDetails.unit - quantity };
+        await axios.put(`${API}edititems/${itemId}`, editedData);
+      });
+      await Promise.all(updatedItemsPromises); 
       navigate("/salesorders"); // navigate to sales orders page on successful save
     } catch (error) {
       console.error("Error adding sales order:", error);
@@ -70,19 +78,57 @@ console.log(items)
     updatedItems.splice(index, 1);
     setItems(updatedItems);
   };
+  const fetchItemDetails = async (itemId) => {
+    try {
+      const response = await axios.get(`${API}getselecteditems/${itemId}`);
+      console.log(response.data.selectedItems[0]);
+      return response.data.selectedItems[0]; // Assuming the API returns item details in the response data
+    } catch (error) {
+      console.error("Error fetching item details:", error);
+      throw error; // Propagate the error to the caller
+    }
+  };
   // Function to handle changes in item details
-  const handleItemChange = (index, field, value) => {
+  const handleItemChange = async (index, field, value) => {
     const updatedItems = [...items];
     updatedItems[index][field] = value;
-    setItems(updatedItems);
+
+    // Handle changes related to the selected item (such as fetching details)
+    if (field === "itemId" || field === "quantity") {
+      try {
+        const itemId = updatedItems[index].itemId; // Get the itemId from the item object
+        const itemDetails = await fetchItemDetails(itemId);
+        if (field === "itemId") {
+          updatedItems[index] = {
+            ...updatedItems[index],
+            name: itemDetails.name,
+            quantity: 1, // Update quantity based on fetched details
+            price: (itemDetails.sellingprice).toFixed(2), // Update price based on fetched details
+          };
+        } else if (field === "quantity") {
+          const totalPrice = itemDetails.sellingprice * value;
+          updatedItems[index] = {
+            ...updatedItems[index],
+            price: totalPrice.toFixed(2), // Update price based on quantity and fetched details
+          }; 
+        }
+
+        setItems(updatedItems);
+      } catch (error) {
+        console.error("Error fetching item details:", error);
+        // Handle error or display a message to the user
+      }
+    }
   };
+
   useEffect(() => {
     let calculatedTotal = 0;
     items.forEach((item) => {
-      calculatedTotal += item.price;
+      calculatedTotal += parseFloat(item.price); // Convert item.price to float
     });
-    setTotalamount(calculatedTotal+Number(shipmentingcharges));
-  }, [items,shipmentingcharges]);
+    // Assuming shipmentingcharges is already a number, no need for Number()
+    setTotalamount((calculatedTotal + Number(shipmentingcharges)).toFixed(2));
+  }, [items, shipmentingcharges]);
   return (
     <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
@@ -146,13 +192,11 @@ console.log(items)
             {items.map((item, index) => (
               <tr key={index}>
                 <td>
-                  <input
-                    type="text"
-                    value={item.name}
-                    onChange={(e) =>
-                      handleItemChange(index, "name", e.target.value)
-                    }
-                    className="border-2 rounded-md px-2 h-5 md:h-8 w-full text-xs md:text-base"
+                <ItemDropdown
+                    selectedItemId={item.itemId} // Pass the selected item's ID to the dropdown
+                    handleItemChange={(selectedItemId) =>
+                      handleItemChange(index, "itemId", selectedItemId)
+                    } // Handle item selection change
                   />
                 </td>
                 <td>
