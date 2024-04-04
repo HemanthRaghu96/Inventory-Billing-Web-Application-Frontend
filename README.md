@@ -6,7 +6,7 @@ For all the individual API I made CRUD operations like add,edit,view selected da
 I have used ReactJS ,Tailwind css ,Axios ,Chart.js ,react-router-dom . \
 Kindly view the API documentation for more detailes.
 
-Frontend Server link : https://hrinventorybilling.netlify.app/\
+Frontend Server link : https://hrinventorybilling.netlify.app/ \
 API documentation : https://documenter.getpostman.com/view/32014275/2sA35LUemb
 
 This project is open scorce, 🚀 Give a Star ⭐️ & Fork to this project ... Happy coding! 🤩
