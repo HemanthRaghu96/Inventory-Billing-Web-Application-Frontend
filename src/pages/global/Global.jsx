@@ -53,7 +53,7 @@ export default function Global() {
   const location = useLocation();
   // Check if the current location is the login or signup page
   const isLoginPage = location.pathname === "/";
-  const isSignupPage = location.pathname === "/signup";
+  const isSignupPage = location.pathname === "/Signup";
   return (
     <section className="app ">
       {!isLoginPage && !isSignupPage && <Topbar />}

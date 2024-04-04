@@ -24,6 +24,7 @@ export default function Login() {
       localStorage.setItem("login", "true");
       response.data.result.token &&
         localStorage.setItem("token", response.data.result.token || "");
+        localStorage.setItem("email",email)
         if( localStorage.getItem("login", "true")){
           navigate('/dashboard')
         }

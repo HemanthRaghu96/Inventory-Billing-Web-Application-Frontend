@@ -21,12 +21,12 @@ export default function Topbar() {
             Inventory
           </h1>
           {/* Searchbar */}
-          <Searchbar />
+          {/* <Searchbar /> */}
         </div>  
         {/* Icons for Account,Setting,Notification */}
         <div className="flex items-center md:mr-14">
-          <IoNotificationsOutline className="md:size-5 cursor-pointer mx-1 md:mx-3" />
-          <IoSettingsOutline className="md:size-5 cursor-pointer mx-1  md:mx-3" />
+          {/* <IoNotificationsOutline className="md:size-5 cursor-pointer mx-1 md:mx-3" /> */}
+          {/* <IoSettingsOutline className="md:size-5 cursor-pointer mx-1  md:mx-3" /> */}
           <IoPersonCircleSharp className="md:size-10 cursor-pointer mx-1  md:mx-3 relative" onClick={()=>handleProfile()}/>
           {openProfile ? <Profile handleProfile={handleProfile} />: null}
         </div>
