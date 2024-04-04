@@ -59,7 +59,7 @@ export  function Editpurchaseorder({ data, purchaseordersId }) {
       const updatedItemsPromises = items.map(async (item) => {
         const { itemId, quantity } = item;
         const itemDetails = await fetchItemDetails(itemId);
-        const editedData = { unit: itemDetails.unit - quantity };
+        const editedData = { unit: itemDetails.unit + quantity };
         await axios.put(`${API}edititems/${itemId}`, editedData);
       });
       await Promise.all(updatedItemsPromises); 
@@ -103,10 +103,10 @@ export  function Editpurchaseorder({ data, purchaseordersId }) {
             ...updatedItems[index],
             name: itemDetails.name,
             quantity: 1, // Update quantity based on fetched details
-            price: (itemDetails.sellingprice).toFixed(2), // Update price based on fetched details
+            price: (itemDetails.costprice).toFixed(2), // Update price based on fetched details
           };
         } else if (field === "quantity") {
-          const totalPrice = itemDetails.sellingprice * value;
+          const totalPrice = itemDetails.costprice * value;
           updatedItems[index] = {
             ...updatedItems[index],
             price: totalPrice.toFixed(2), // Update price based on quantity and fetched details

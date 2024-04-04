@@ -35,7 +35,7 @@ export default function AddSalesOrder() {
       const updatedItemsPromises = items.map(async (item) => {
         const { itemId, quantity } = item;
         const itemDetails = await fetchItemDetails(itemId);
-        const editedData = { unit: itemDetails.unit  };
+        const editedData = { unit: itemDetails.unit - quantity};
         await axios.put(`${API}edititems/${itemId}`, editedData);
       });
       await Promise.all(updatedItemsPromises); 

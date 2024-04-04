@@ -47,28 +47,28 @@ export default function ViewSingleItem() {
       </div>
       <div className="flex mt-3">
         <div className="py-1 my-1 w-40">
-          <h1 className="my-1 text-lg">Item Name</h1>
-          <h1 className="my-1 text-lg">SKU</h1>
-          <h1 className="my-1 text-lg">Unit</h1>
-          <h1 className="my-1 text-lg">UPC</h1>
-          <h1 className="my-1 text-lg">EAN</h1>
-          <h1 className="my-1 text-lg">ISBN</h1>
+          <h1 className="my-1 text-xs md:text-lg">Item Name</h1>
+          <h1 className="my-1 text-xs md:text-lg">SKU</h1>
+          <h1 className="my-1 text-xs md:text-lg">Unit</h1>
+          <h1 className="my-1 text-xs md:text-lg">UPC</h1>
+          <h1 className="my-1 text-xs md:text-lg">EAN</h1>
+          <h1 className="my-1 text-xs md:text-lg">ISBN</h1>
         </div>
-        <div className="py-1 my-1  w-40">
-          <h1 className="my-1 text-lg">{data.name}</h1>
-          <h1 className="my-1 text-lg">
+        <div className="py-1 my-1  w-72">
+          <h1 className="my-1 text-xs md:text-lg">{data.name}</h1>
+          <h1 className="my-1 text-xs md:text-lg">
             {data.sku == null ? "null" : data.sku}
           </h1>
-          <h1 className="my-1 text-lg">
+          <h1 className="my-1 text-xs md:text-lg">
             {data.unit == null ? "null" : data.unit}
           </h1>
-          <h1 className="my-1 text-lg">
+          <h1 className="my-1 text-xs md:text-lg">
             {data.upc == null ? "null" : data.upc}
           </h1>
-          <h1 className="my-1 text-lg">
+          <h1 className="my-1 text-xs md:text-lg">
             {data.ean == null ? "null" : data.ean}
           </h1>
-          <h1 className="my-1 text-lg">
+          <h1 className="my-1 text-xs md:text-lg">
             {data.isbn == null ? "null" : data.isbn}
           </h1>
         </div>
@@ -77,14 +77,14 @@ export default function ViewSingleItem() {
         <h1 className="font-semibold text-lg">Sales Information</h1>
         <div className="flex">
           <div className="py-1 my-1 w-40">
-            <h1 className="my-1 text-lg">Selling Price</h1>
-            <h1 className="my-1 text-lg">Sales Account</h1>
-            <h1 className="my-1 text-lg">Description</h1>
+            <h1 className="my-1 text-xs md:text-lg">Selling Price</h1>
+            <h1 className="my-1 text-xs md:text-lg">Sales Account</h1>
+            <h1 className="my-1 text-xs md:text-lg">Description</h1>
           </div>
           <div className="py-1 my-1 ">
-            <h1 className="my-1 text-lg">{data.sellingprice}</h1>
-            <h1 className="my-1 text-lg">{data.salesaccount}</h1>
-            <h1 className="my-1 text-lg">{data.salesdescription}</h1>
+            <h1 className="my-1 text-xs md:text-lg">{data.sellingprice}</h1>
+            <h1 className="my-1 text-xs md:text-lg">{data.salesaccount}</h1>
+            <h1 className="my-1 text-xs md:text-lg">{data.salesdescription}</h1>
           </div>
         </div>
       </div>
