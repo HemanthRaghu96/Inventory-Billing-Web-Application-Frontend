@@ -1,3 +1,17 @@
+# Inventory Billing Web Application Backend
+
+Inventory Billing Web Application is nothing but a wharehouse where a person get items from a vendor for low price and sells items for the custumors for profit. \
+In this application I have used my own API for Users ,Items ,Customers ,Vendors ,Salesorders ,Purchaseorders ,Invoices ,Bills. \
+For all the individual API I made CRUD operations like add,edit,view selected data,delete in the UI. \
+I have used ReactJS ,Tailwind css ,Axios ,Chart.js ,react-router-dom . \
+Kindly view the API documentation for more detailes.
+
+Frontend Server link : \
+API documentation : https://documenter.getpostman.com/view/32014275/2sA35LUemb
+
+This project is open scorce, 🚀 Give a Star ⭐️ & Fork to this project ... Happy coding! 🤩
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

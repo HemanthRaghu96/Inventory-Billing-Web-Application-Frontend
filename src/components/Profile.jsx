@@ -26,8 +26,8 @@ export default function Profile({ handleProfile }) {
 
   return (
     <section>
-      <div className=" absolute top-12 right-5 text-black w-[220px] lg:w-[400px] bg-sidebarColor rounded-b-lg">
-        <div className="flex justify-start items-center">
+      <div className=" absolute top-12 right-5 text-black w-[220px] lg:w-[350px] bg-sidebarColor rounded-b-lg">
+        <div className="flex justify-evenly items-center">
           {/* <img
             src=""
             className="size-16 rounded-full m-2"

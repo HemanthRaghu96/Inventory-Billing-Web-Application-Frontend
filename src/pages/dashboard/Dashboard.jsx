@@ -8,6 +8,7 @@ import PurchaseOrderChart from "../../components/PurchaseOrderChart";
 export default function Dashboard() {
   const salesChartRef = useRef(null);
   const purchaseChartRef = useRef(null);
+  const [loading, setLoading] = useState(true);
   const [totalCustomers, setTotalCustomers] = useState("");
   const [totalSalesOrders, setTotalSalesOrders] = useState("");
   const [totalInvoices, setTotalInvoices] = useState("");
@@ -81,6 +82,7 @@ export default function Dashboard() {
       setInvoicesStatusUNPAID(countunpaid)
       setInvoicesStatusPARTIALLYPAID(countpp)
       setInvoicesStatusPAID(countpaid)
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -110,6 +112,7 @@ export default function Dashboard() {
       setPurchaseOrdersData(allPurchaseOrders);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false);
     }
   };
   const fetchtotalBills= async () => {
@@ -133,10 +136,15 @@ export default function Dashboard() {
       setBillsStatusUNPAID(countunpaid)
       setBillsStatusPARTIALLYPAID(countpp)
       setBillsStatusPAID(countpaid)
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false);
     }
   };
+  if (loading) {
+    return <div className="ml-14 mt-16 md:ml-56 h-full">Loading...</div>; 
+  }
   // console.log(totalSalesOrders)
   return (
     <section className="ml-14 mt-16 md:ml-56 h-full">
