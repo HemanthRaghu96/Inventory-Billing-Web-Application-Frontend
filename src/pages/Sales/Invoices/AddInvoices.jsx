@@ -35,7 +35,7 @@ export default function AddInvoices() {
     };
     try {
       const response = await axios.post(`${API}addinvoice`, invoiceData);
-      console.log(response.data); // handle response as needed
+      // console.log(response.data); // handle response as needed
       navigate("/invoices"); // navigate to sales orders page on successful save
     } catch (error) {
       console.error("Error adding sales order:", error);

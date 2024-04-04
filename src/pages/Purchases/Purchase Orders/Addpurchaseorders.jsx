@@ -17,7 +17,7 @@ export default function Addpurchaseorders() {
   const [totalamount, setTotalamount] = useState("");
   const [shipmentingcharges, setShipmentingCharges] = useState("");
   const [customernote, setCustomerNote] = useState("");
-console.log(items)
+// console.log(items)
   const handleSave = async () => {
     const purchaseorderData = {
       vendorname,
@@ -31,7 +31,7 @@ console.log(items)
     };
     try {
       const response = await axios.post(`${API}addpurchaseorder`, purchaseorderData);
-      console.log(response.data); // handle response as needed
+      // console.log(response.data); // handle response as needed
       const updatedItemsPromises = items.map(async (item) => {
         const { itemId, quantity } = item;
         const itemDetails = await fetchItemDetails(itemId);

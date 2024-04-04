@@ -9,7 +9,7 @@ const PurchaseOrderDropdown = ({ ordernumber, setOrderNumber }) => {
     const fetchNames = async () => {
       try {
         const response = await axios.get(`${API}getAllPurchaseorder`);
-        console.log(response.data.allPurchaseorders)
+        // console.log(response.data.allPurchaseorders)
         setNames(response.data.allPurchaseorders);
       } catch (error) {
         console.error('Error fetching names:', error);

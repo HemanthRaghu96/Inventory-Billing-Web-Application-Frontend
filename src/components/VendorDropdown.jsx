@@ -9,7 +9,7 @@ const VendorDropdown = ({vendorname, setVendorName}) => {
     const fetchNames = async () => {
       try {
         const response = await axios.get(`${API}getallvendor`);
-        console.log(response.data.allVendor)
+        // console.log(response.data.allVendor)
         setNames(response.data.allVendor); 
       } catch (error) {
         console.error('Error fetching names:', error);

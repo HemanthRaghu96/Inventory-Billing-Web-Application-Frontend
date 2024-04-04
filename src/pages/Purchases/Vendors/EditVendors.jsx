@@ -15,7 +15,7 @@ export default function EditVendors() {
     const response = await axios.get(
       `${API}getselectedvendor/${vendorsId}`
     );
-    console.log(response.data.selectedVendor[0]);
+    // console.log(response.data.selectedVendor[0]);
     setData(response.data.selectedVendor[0]);
   };
   return data ? (

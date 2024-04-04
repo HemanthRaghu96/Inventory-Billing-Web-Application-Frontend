@@ -19,7 +19,7 @@ export default function EditSalesOrder() {
     const response = await axios.get(
       `${API}getselectedsalesorder/${salesordersId}`
     );
-    console.log(response.data.selectedSalesorders[0]);
+    // console.log(response.data.selectedSalesorders[0]);
     setData(response.data.selectedSalesorders[0]);
   };
   return data ? (
@@ -41,7 +41,7 @@ export  function EditSalesOrders({ data, salesordersId }) {
   const [totalamount, setTotalamount] = useState(data.totalamount);
   const [shipmentingcharges, setShipmentingCharges] = useState(data.shipmentingcharges);
   const [customernote, setCustomerNote] = useState(data.customernote);
-console.log(items)
+// console.log(items)
   const handleSave = async () => {
     const salesorderData = {
       customername,

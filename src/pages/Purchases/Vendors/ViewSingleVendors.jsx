@@ -16,7 +16,7 @@ export default function ViewSingleVendors() {
   }, []);
   const fetchSelecteData = async () => {
     const response = await axios.get(`${API}getselectedvendor/${vendorsId}`);
-    console.log(response.data)
+    // console.log(response.data)
     setData(response.data.selectedVendor[0]);
   };
   const handleDelete = async () => {

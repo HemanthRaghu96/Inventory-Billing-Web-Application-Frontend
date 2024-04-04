@@ -18,30 +18,31 @@ export default function EditItem() {
   return data ? <EditItems data={data} itemId={itemId} /> : "Loading...";
 }
 
- function EditItems({ data,itemId }) {
- 
+function EditItems({ data, itemId }) {
   const navigate = useNavigate();
 
-  const [name, setName] = useState(data.name);
-  const [sku, setSku] = useState(data.sku);
-  const [unit, setUnit] = useState(data.unit);
-  const [dimensions, setDimensions] = useState(data.dimensions);
-  const [manufacturer, setManufacturer] = useState(data.manufacturer);
-  const [upc, setUpc] = useState(data.upc);
-  const [ean, setEan] = useState(data.ean);
-  const [weight, setWeight] = useState(data.weight);
-  const [brand, setBrand] = useState(data.brand);
-  const [mpn, setMpn] = useState(data.mpn);
-  const [isbn, setIsbn] = useState(data.isbn);
-  const [sellingprice, setSellingPrice] = useState(data.sellingprice);
-  const [salesaccount, setSalesAccount] = useState(data.salesaccount);
+  const [name, setName] = useState(data.name || "");
+  const [sku, setSku] = useState(data.sku || "");
+  const [unit, setUnit] = useState(data.unit || "");
+  const [dimensions, setDimensions] = useState(data.dimensions || "");
+  const [manufacturer, setManufacturer] = useState(data.manufacturer || "");
+  const [upc, setUpc] = useState(data.upc || "");
+  const [ean, setEan] = useState(data.ean || "");
+  const [weight, setWeight] = useState(data.weight || "");
+  const [brand, setBrand] = useState(data.brand || "");
+  const [mpn, setMpn] = useState(data.mpn || "");
+  const [isbn, setIsbn] = useState(data.isbn || "");
+  const [sellingprice, setSellingPrice] = useState(data.sellingprice || "");
+  const [salesaccount, setSalesAccount] = useState(data.salesaccount || "");
   const [salesdescription, setSalesDescription] = useState(
-    data.salesdescription
+    data.salesdescription || ""
   );
-  const [costprice, setCostPrice] = useState(data.costprice);
-  const [purchaseaccount, setPurchaseAccount] = useState(data.purchaseaccount);
+  const [costprice, setCostPrice] = useState(data.costprice || "");
+  const [purchaseaccount, setPurchaseAccount] = useState(
+    data.purchaseaccount || ""
+  );
   const [purchasedescription, setPurchaseDescription] = useState(
-    data.purchasedescription
+    data.purchasedescription || ""
   );
 
   const handleSave = async () => {
@@ -76,7 +77,7 @@ export default function EditItem() {
         </Link>
       </div>
       {/* First set of data */}
-     <div className="flex flex-col lg:flex-row justify-start ">
+      <div className="flex flex-col lg:flex-row justify-start ">
         <div className="mt-5 w-[220px] md:w-[320px]">
           <div className="flex justify-between my-4">
             <h1 className="text-xs md:text-base">Name*</h1>
@@ -91,7 +92,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">SKU*</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setSku(e.target.value)}
               value={sku}
             />
@@ -100,7 +101,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">Unit*</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setUnit(e.target.value)}
               value={unit}
             />
@@ -113,13 +114,13 @@ export default function EditItem() {
         </div> */}
       </div>
       {/* Second set of data */}
-     <div className="flex flex-col lg:flex-row justify-start ">
+      <div className="flex flex-col lg:flex-row justify-start ">
         <div className=" lg:mt-5 w-[220px] md:w-[320px]">
           <div className="flex justify-between lg:my-4">
             <h1 className="text-xs md:text-base">Dimensions</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setDimensions(e.target.value)}
               value={dimensions}
             />
@@ -128,7 +129,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">Manufacturer</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setManufacturer(e.target.value)}
               value={manufacturer}
             />
@@ -137,7 +138,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">UPC </h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setUpc(e.target.value)}
               value={upc}
             />
@@ -146,7 +147,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">EAN </h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setEan(e.target.value)}
               value={ean}
             />
@@ -157,7 +158,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">Weight</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setWeight(e.target.value)}
               value={weight}
             />
@@ -166,7 +167,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">Brand</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setBrand(e.target.value)}
               value={brand}
             />
@@ -175,7 +176,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">MPN </h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setMpn(e.target.value)}
               value={mpn}
             />
@@ -184,7 +185,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">ISBN </h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setIsbn(e.target.value)}
               value={isbn}
             />
@@ -195,22 +196,23 @@ export default function EditItem() {
       <h1 className="font-semibold text-xl mt-2">
         Sales & Purchase Information{" "}
       </h1>
-     <div className="flex flex-col lg:flex-row justify-start ">
+      <div className="flex flex-col lg:flex-row justify-start ">
         <div className=" mt-1 w-[220px] md:w-[320px]">
           <div className="flex justify-between my-4">
             <h1 className="text-xs md:text-base">Selling Price*</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setSellingPrice(e.target.value)}
-              value={name}sellingprice
+              value={name}
+              sellingprice
             />
           </div>
           <div className="flex justify-between my-4">
             <h1 className="text-xs md:text-base">Account*</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setSalesAccount(e.target.value)}
               value={salesaccount}
             />
@@ -219,10 +221,9 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">Description </h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setSalesDescription(e.target.value)}
               value={salesdescription}
-              
             />
           </div>
         </div>
@@ -231,7 +232,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">Cost Price*</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setCostPrice(e.target.value)}
               value={costprice}
             />
@@ -240,7 +241,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">Account*</h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setPurchaseAccount(e.target.value)}
               value={purchaseaccount}
             />
@@ -249,7 +250,7 @@ export default function EditItem() {
             <h1 className="text-xs md:text-base">Description </h1>
             <input
               type="text"
-             className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="text-xs md:text-base border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setPurchaseDescription(e.target.value)}
               value={purchasedescription}
             />

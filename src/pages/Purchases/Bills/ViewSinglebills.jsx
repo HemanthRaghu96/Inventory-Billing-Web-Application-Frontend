@@ -21,7 +21,7 @@ export default function ViewSinglebills() {
     const response = await axios.get(
       `${API}getselectedbill/${billsId}`
     );
-    console.log(response.data.selectedBills[0]);
+    // console.log(response.data.selectedBills[0]);
     setData(response.data.selectedBills[0]);
   };
   const fetchItemData = async () => {

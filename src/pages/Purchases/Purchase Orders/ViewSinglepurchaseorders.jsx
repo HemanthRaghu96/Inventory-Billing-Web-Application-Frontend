@@ -18,7 +18,7 @@ export default function ViewSinglepurchaseorders() {
     const response = await axios.get(
       `${API}getselectedpurchaseorder/${purchaseordersId}`
     );
-    console.log(response.data.selectedPurchaseorders[0]);
+    // console.log(response.data.selectedPurchaseorders[0]);
     setData(response.data.selectedPurchaseorders[0]);
   };
   const handleDelete = async () => {

@@ -13,7 +13,7 @@ export default function ViewSingleInvoices() {
   const [itemData, setItemData] = useState([]);
   const { invoicesId } = useParams();
   const column = ["NAME", "QUANTITY", "PRICE"];
-  console.log(itemData)
+  // console.log(itemData)
   useEffect(() => {
     fetchSelecteData();
     fetchItemData();

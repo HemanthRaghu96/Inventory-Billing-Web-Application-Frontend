@@ -20,7 +20,7 @@ export default function BillsList() {
   const fetchItemData = async () => {
     try {
       const response = await axios.get(`${API}getallbill`);
-      console.log(response.data.allBills);
+      // console.log(response.data.allBills);
       setData(response.data.allBills);
     } catch (error) {
       console.error("Error fetching data:", error);

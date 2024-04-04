@@ -17,7 +17,7 @@ export default function Editbills() {
     const response = await axios.get(
       `${API}getselectedbill/${billsId}`
     );
-    console.log(response.data.selectedBills[0]);
+    // console.log(response.data.selectedBills[0]);
     setData(response.data.selectedBills[0]);
   };
   return data ? (
@@ -40,7 +40,7 @@ export  function Editbill({data,billsId}) {
   const [shipmentingcharges, setShipmentingCharges] = useState(data.shipmentingcharges);
   const [customernote, setCustomerNote] = useState(data.customernote);
   const status=["UNPAID","PARTIALLY PAID","PAID"]
-console.log(items)
+// console.log(items)
   const handleSave = async () => {
     const billData = {
       vendorname,

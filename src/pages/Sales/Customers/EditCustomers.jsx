@@ -15,7 +15,7 @@ export default function EditCustomers() {
     const response = await axios.get(
       `${API}getselectedcustomer/${customersId}`
     );
-    console.log(response.data.selectedCustomer[0]);
+    // console.log(response.data.selectedCustomer[0]);
     setData(response.data.selectedCustomer[0]);
   };
   return data ? (

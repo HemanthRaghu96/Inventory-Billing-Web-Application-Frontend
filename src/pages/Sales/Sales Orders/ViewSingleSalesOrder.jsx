@@ -18,7 +18,7 @@ export default function ViewSingleSalesOrder() {
     const response = await axios.get(
       `${API}getselectedsalesorder/${salesordersId}`
     );
-    console.log(response.data.selectedSalesorders[0]);
+    // console.log(response.data.selectedSalesorders[0]);
     setData(response.data.selectedSalesorders[0]);
   };
   const handleDelete = async () => {

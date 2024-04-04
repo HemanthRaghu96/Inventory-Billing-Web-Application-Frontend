@@ -51,7 +51,7 @@ export default function Login() {
               <MdInventory className="size-12 my-3" />
 
               <h1 className="text-xl font-semibold">Inventory</h1>
-            </div>
+            </div>  
 
             <h1 className="text-2xl font-semibold px-2">Sign in</h1>
             <p className="text-base font-light px-2">to access Inventory</p>
@@ -67,6 +67,7 @@ export default function Login() {
               onChange={(e) => handlePassword(e)}
               className="m-2 px-2 py-1 border bg-slate-100 rounded-md"
             />
+            <button className="text-base font-semibold px-2 text-buttonColor text-right" onClick={()=>navigate("/resetpassword")}>Forgot Password?</button>
             <button
               className="m-2 p-2 border rounded-lg bg-buttonColor text-white font-semibold cursor-pointer"
               onClick={() => handleLogin()}
@@ -79,6 +80,11 @@ export default function Login() {
                 <Link to={"/Signup"}> Sign up now</Link>
               </span>
             </p>
+            <div className="flex flex-col justify-center items-center mt-2">
+              <p className="text-base font-semibold ">Demo User</p>
+              <p className="text-base font-light ">Email : test@gmail.com</p>
+              <p className="text-base font-light ">Password : test123</p>
+            </div>
           </div>
         </div>
 

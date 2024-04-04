@@ -17,7 +17,7 @@ export default function AddSalesOrder() {
   const [totalamount, setTotalAmount] = useState("");
   const [shipmentingcharges, setShipmentingCharges] = useState("");
   const [customernote, setCustomerNote] = useState("");
-  console.log(items);
+  // console.log(items);
   const handleSave = async () => {
     const salesorderData = {
       customername,

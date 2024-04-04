@@ -13,7 +13,8 @@ export default function Dashboard() {
   const [totalSalesOrders, setTotalSalesOrders] = useState("");
   const [totalInvoices, setTotalInvoices] = useState("");
   const [invoicesStatusUNPAID, setInvoicesStatusUNPAID] = useState("");
-  const [invoicesStatusPARTIALLYPAID, setInvoicesStatusPARTIALLYPAID] = useState("");
+  const [invoicesStatusPARTIALLYPAID, setInvoicesStatusPARTIALLYPAID] =
+    useState("");
   const [invoicesStatusPAID, setInvoicesStatusPAID] = useState("");
   const [salesOrdersData, setSalesOrdersData] = useState([]);
 
@@ -27,20 +28,20 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchtotalCustomers();
-    fetchtotalSalesOrders()
-    fetchtotalInvoices()
-    fetchtotalVendors()
-    fetchtotalPurchaseOrders()
-    fetchtotalBills()
+    fetchtotalSalesOrders();
+    fetchtotalInvoices();
+    fetchtotalVendors();
+    fetchtotalPurchaseOrders();
+    fetchtotalBills();
   }, [totalCustomers]);
 
   const fetchtotalCustomers = async () => {
     try {
       const response = await axios.get(`${API}getallcustomer`);
-      let count=0
-      response.data.allCustomer.map(record=>{
-        count++
-      })
+      let count = 0;
+      response.data.allCustomer.map((record) => {
+        count++;
+      });
       setTotalCustomers(count);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -49,39 +50,38 @@ export default function Dashboard() {
   const fetchtotalSalesOrders = async () => {
     try {
       const response = await axios.get(`${API}getallsalesorder`);
-      let count=0
-      response.data.allSalesorders.map(record=>{
-        count++
-      })
+      let count = 0;
+      response.data.allSalesorders.map((record) => {
+        count++;
+      });
       setTotalSalesOrders(count);
       const allSalesOrders = response.data.allSalesorders;
-    setSalesOrdersData(allSalesOrders);
+      setSalesOrdersData(allSalesOrders);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  console.log(purchaseOrdersData)
   const fetchtotalInvoices = async () => {
     try {
       const response = await axios.get(`${API}getallinvoice`);
-      let count=0
-      let countunpaid=0
-      let countpp=0
-      let countpaid=0
-      response.data.allInvoices.map(record=>{
-       if(record.payment==="UNPAID"){
-        countunpaid++
-       }else if(record.payment==="PARTIALLY PAID"){
-        countpp++
-       }else if(record.payment==="PAID"){
-        countpaid++
-       }
-        count++
-      })
+      let count = 0;
+      let countunpaid = 0;
+      let countpp = 0;
+      let countpaid = 0;
+      response.data.allInvoices.map((record) => {
+        if (record.payment === "UNPAID") {
+          countunpaid++;
+        } else if (record.payment === "PARTIALLY PAID") {
+          countpp++;
+        } else if (record.payment === "PAID") {
+          countpaid++;
+        }
+        count++;
+      });
       setTotalInvoices(count);
-      setInvoicesStatusUNPAID(countunpaid)
-      setInvoicesStatusPARTIALLYPAID(countpp)
-      setInvoicesStatusPAID(countpaid)
+      setInvoicesStatusUNPAID(countunpaid);
+      setInvoicesStatusPARTIALLYPAID(countpp);
+      setInvoicesStatusPAID(countpaid);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -91,10 +91,10 @@ export default function Dashboard() {
   const fetchtotalVendors = async () => {
     try {
       const response = await axios.get(`${API}getallvendor`);
-      let count=0
-      response.data.allVendor.map(record=>{
-        count++
-      })
+      let count = 0;
+      response.data.allVendor.map((record) => {
+        count++;
+      });
       setTotalVendor(count);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -103,10 +103,10 @@ export default function Dashboard() {
   const fetchtotalPurchaseOrders = async () => {
     try {
       const response = await axios.get(`${API}getAllPurchaseorder`);
-      let count=0
-      response.data.allPurchaseorders.map(record=>{
-        count++
-      })
+      let count = 0;
+      response.data.allPurchaseorders.map((record) => {
+        count++;
+      });
       setTotalPurchaseOrders(count);
       const allPurchaseOrders = response.data.allPurchaseorders;
       setPurchaseOrdersData(allPurchaseOrders);
@@ -115,27 +115,27 @@ export default function Dashboard() {
       setLoading(false);
     }
   };
-  const fetchtotalBills= async () => {
+  const fetchtotalBills = async () => {
     try {
       const response = await axios.get(`${API}getallbill`);
-      let count=0
-      let countunpaid=0
-      let countpp=0
-      let countpaid=0
-      response.data.allBills.map(record=>{
-       if(record.payment==="UNPAID"){
-        countunpaid++
-       }else if(record.payment==="PARTIALLY PAID"){
-        countpp++
-       }else if(record.payment==="PAID"){
-        countpaid++
-       }
-        count++
-      })
+      let count = 0;
+      let countunpaid = 0;
+      let countpp = 0;
+      let countpaid = 0;
+      response.data.allBills.map((record) => {
+        if (record.payment === "UNPAID") {
+          countunpaid++;
+        } else if (record.payment === "PARTIALLY PAID") {
+          countpp++;
+        } else if (record.payment === "PAID") {
+          countpaid++;
+        }
+        count++;
+      });
       setTotalBills(count);
-      setBillsStatusUNPAID(countunpaid)
-      setBillsStatusPARTIALLYPAID(countpp)
-      setBillsStatusPAID(countpaid)
+      setBillsStatusUNPAID(countunpaid);
+      setBillsStatusPARTIALLYPAID(countpp);
+      setBillsStatusPAID(countpaid);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -143,7 +143,7 @@ export default function Dashboard() {
     }
   };
   if (loading) {
-    return <div className="ml-14 mt-16 md:ml-56 h-full">Loading...</div>; 
+    return <div className="ml-14 mt-16 md:ml-56 h-full">Loading...</div>;
   }
   // console.log(totalSalesOrders)
   return (
@@ -157,7 +157,7 @@ export default function Dashboard() {
             <div className="flex justify-center">
               <div className="mx-2">
                 <p className="flex justify-center m-4 text-3xl font-bold text-blue-400">
-                 {totalCustomers}
+                  {totalCustomers}
                 </p>
                 <h1 className="p-2">Total Customers</h1>
               </div>
@@ -169,7 +169,7 @@ export default function Dashboard() {
               </div>
               <div className="mx-2">
                 <p className="flex justify-center m-4 text-3xl font-bold text-green-400">
-                 {totalInvoices}
+                  {totalInvoices}
                 </p>
                 <h1 className="p-2"> Total Invoices</h1>
               </div>
@@ -188,13 +188,13 @@ export default function Dashboard() {
               </div>
               <div className="mx-2">
                 <p className="flex justify-center m-4 text-3xl font-bold text-yellow-400">
-                 {invoicesStatusPARTIALLYPAID}
+                  {invoicesStatusPARTIALLYPAID}
                 </p>
                 <h1 className="p-2 flex justify-center">PARTIALLY PAID</h1>
               </div>
               <div className="mx-2">
                 <p className="flex justify-center m-4 text-3xl font-bold text-green-400">
-                 {invoicesStatusPAID}
+                  {invoicesStatusPAID}
                 </p>
                 <h1 className="p-2 flex justify-center">PAID</h1>
               </div>
@@ -227,15 +227,15 @@ export default function Dashboard() {
           </div> */}
         </div>
         <div className="flex flex-col justify-center items-center mt-5">
-        <h1 className=" p-2 flex justify-center text-2xl font-semibold">
-          Sales Order Summary
-        </h1>
-        <div className="flex justify-center">
-          <div className="border w-[250px] md:w-[500px] rounded-lg mt-10 mr-10">
-          <SalesOrderChart  salesOrdersData={salesOrdersData} />
+          <h1 className=" p-2 flex justify-center text-2xl font-semibold">
+            Sales Order Summary
+          </h1>
+          <div className="flex justify-center">
+            <div className="border w-[250px] md:w-[500px] rounded-lg mt-10 mr-10">
+              <SalesOrderChart salesOrdersData={salesOrdersData} />
+            </div>
           </div>
         </div>
-      </div>
       </div>
       <div className="flex flex-col lg:flex-row justify-center">
         <div>
@@ -271,13 +271,13 @@ export default function Dashboard() {
             <div className="flex justify-center">
               <div className="mx-2">
                 <p className="flex justify-center m-4 text-3xl font-bold text-blue-400">
-                 {billsStatusUNPAID}
+                  {billsStatusUNPAID}
                 </p>
                 <h1 className="p-2 flex justify-center">UNPAID</h1>
               </div>
               <div className="mx-2">
                 <p className="flex justify-center m-4 text-3xl font-bold text-yellow-400">
-                 {billsStatusPARTIALLYPAID}
+                  {billsStatusPARTIALLYPAID}
                 </p>
                 <h1 className="p-2 flex justify-center">PARTIALLY PAID</h1>
               </div>
@@ -316,19 +316,16 @@ export default function Dashboard() {
           </div> */}
         </div>
         <div className="flex flex-col justify-center items-center mt-5">
-        <h1 className=" p-2 flex justify-center text-2xl font-semibold">
-          Purchase Order Summary
-        </h1>
-        <div className="flex justify-center mb-10">
-          <div className="border w-[250px] md:w-[500px] rounded-lg mt-10 mr-10">
-          <PurchaseOrderChart  purchaseOrdersData={purchaseOrdersData} />
+          <h1 className=" p-2 flex justify-center text-2xl font-semibold">
+            Purchase Order Summary
+          </h1>
+          <div className="flex justify-center mb-10">
+            <div className="border w-[250px] md:w-[500px] rounded-lg mt-10 mr-10">
+              <PurchaseOrderChart purchaseOrdersData={purchaseOrdersData} />
+            </div>
           </div>
         </div>
       </div>
-      </div>  
-     
-     
-     
     </section>
   );
 }

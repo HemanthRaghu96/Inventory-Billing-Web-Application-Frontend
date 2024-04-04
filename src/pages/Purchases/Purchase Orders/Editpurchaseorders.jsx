@@ -19,7 +19,7 @@ export default function Editpurchaseorders() {
     const response = await axios.get(
       `${API}getselectedpurchaseorder/${purchaseordersId}`
     );
-    console.log(response.data.selectedPurchaseorders[0]);
+    // console.log(response.data.selectedPurchaseorders[0]);
     setData(response.data.selectedPurchaseorders[0]);
   };
   return data ? (
@@ -41,7 +41,7 @@ export  function Editpurchaseorder({ data, purchaseordersId }) {
   const [totalamount, setTotalamount] = useState(data.totalamount);
   const [shipmentingcharges, setShipmentingCharges] = useState(data.shipmentingcharges);
   const [customernote, setVendorNote] = useState(data.customernote);
-console.log(items)
+// console.log(items)
   const handleSave = async () => {
     const purchaseorderData = {
       vendorname,

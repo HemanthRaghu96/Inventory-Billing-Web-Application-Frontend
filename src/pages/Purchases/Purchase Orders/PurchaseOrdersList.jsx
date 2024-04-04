@@ -20,7 +20,7 @@ export default function PurchaseOrdersList() {
   const fetchItemData = async () => {
     try {
       const response = await axios.get(`${API}getAllPurchaseorder`);
-      console.log(response.data.allPurchaseorders);
+      // console.log(response.data.allPurchaseorders);
       setData(response.data.allPurchaseorders);
     } catch (error) {
       console.error("Error fetching data:", error);

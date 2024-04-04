@@ -16,7 +16,7 @@ export default function ViewSingleCustomers() {
   }, []);
   const fetchSelecteData = async () => {
     const response = await axios.get(`${API}getselectedcustomer/${customersId}`);
-    console.log(response.data.selectedCustomer[0])
+    // console.log(response.data.selectedCustomer[0])
     setData(response.data.selectedCustomer[0]);
   };
   const handleDelete = async () => {

@@ -15,7 +15,7 @@ export default function VendorList() {
   const fetchItemData = async () => {
     try {
       const response = await axios.get(`${API}getallvendor`);
-      console.log(response.data.allVendor)
+      // console.log(response.data.allVendor)
       setData(response.data.allVendor);
     } catch (error) {
       console.error("Error fetching data:", error);

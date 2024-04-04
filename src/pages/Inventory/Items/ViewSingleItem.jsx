@@ -72,7 +72,6 @@ export default function ViewSingleItem() {
             {data.isbn == null ? "null" : data.isbn}
           </h1>
         </div>
-        
       </div>
       <div className="mt-5">
         <h1 className="font-semibold text-lg">Sales Information</h1>

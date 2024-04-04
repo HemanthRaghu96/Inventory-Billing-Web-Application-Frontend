@@ -18,7 +18,7 @@ export default function Addbills() {
   const [shipmentingcharges, setShipmentingCharges] = useState("");
   const [customernote, setCustomerNote] = useState("");
   const data=["UNPAID","PARTIALLY PAID","PAID"]
-console.log(items)
+// console.log(items)
   const handleSave = async () => {
     const billData = {
       vendorname,

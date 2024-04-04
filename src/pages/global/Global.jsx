@@ -48,66 +48,113 @@ import Editpurchaseorders from "../Purchases/Purchase Orders/Editpurchaseorders"
 import AddInvoices from "../Sales/Invoices/AddInvoices";
 import ViewSingleInvoices from "../Sales/Invoices/ViewSingleInvoices";
 import EditInvoices from "../Sales/Invoices/EditInvoices";
+import ResetPassword from "../../resetPassword/ResetPassword";
+import SucessEmailsent from "../../resetPassword/SucessEmailsent";
+import UserChangePassword from "../../resetPassword/UserChangePassword";
 
 export default function Global() {
   const location = useLocation();
   // Check if the current location is the login or signup page
   const isLoginPage = location.pathname === "/";
   const isSignupPage = location.pathname === "/Signup";
+  const isResetPasswordPage = location.pathname === "/resetpassword";
+  const issucessemailsendPage = location.pathname === "/sucessemailsend";
+  const isChangePasswordPage = location.pathname.startsWith("/forgotpassword");
   return (
     <section className="app ">
-      {!isLoginPage && !isSignupPage && <Topbar />}
-      {!isLoginPage && !isSignupPage && <Sidebar />}
+      {!isLoginPage &&
+        !isSignupPage &&
+        !isResetPasswordPage &&
+        !issucessemailsendPage &&
+        !isChangePasswordPage && <Topbar />}
+      {!isLoginPage &&
+        !isSignupPage &&
+        !isResetPasswordPage &&
+        !issucessemailsendPage &&
+        !isChangePasswordPage && <Sidebar />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/sucessemailsend" element={<SucessEmailsent />} />
+        <Route
+          path="/forgotpassword/:userid/:token"
+          element={<UserChangePassword />}
+        />
         {/* Inventory Tab */}
         {/* Items page */}
         <Route path="/items" element={<ItemList />} />
         <Route path="/items/additems" element={<AddItem />} />
         <Route path="/items/:itemId" element={<ViewSingleItem />} />
         <Route path="/items/edititem/:itemId" element={<EditItem />} />
-         {/* Items page
+        {/* Items page
         <Route path="/inventoryadjustments" element={<InventoryAdjustmentList />}/>
          <Route path="/inventoryadjustments/addinventoryadjustments" element={<AddInventoryAdjustment />} />
         <Route path="/inventoryadjustments/inventoryadjustmentname" element={<ViewSingleInventoryAdjustment />} />
         <Route path="/inventoryadjustments/editinventoryadjustment" element={<EditInventoryAdjustment />} /> */}
         {/* Sales page */}
-          {/* Customers page */}
+        {/* Customers page */}
         <Route path="/customers" element={<Customers />} />
         <Route path="/customers/addcustomers" element={<AddCustomers />} />
-        <Route path="/customers/:customersId" element={<ViewSingleCustomers />} />
-        <Route path="/customers/customersitem/:customersId" element={<EditCustomers />} />
+        <Route
+          path="/customers/:customersId"
+          element={<ViewSingleCustomers />}
+        />
+        <Route
+          path="/customers/customersitem/:customersId"
+          element={<EditCustomers />}
+        />
         {/* Sales Order page */}
         <Route path="/salesorders" element={<SalesOrderList />} />
-        <Route path="/salesorders/addsalesorders" element={<AddSalesOrder />} />  
-        <Route path="/salesorders/:salesordersId" element={<ViewSingleSalesOrder />} />
-        <Route path="/salesorders/salesordersitem/:salesordersId" element={<EditSalesOrder/>} />
+        <Route path="/salesorders/addsalesorders" element={<AddSalesOrder />} />
+        <Route
+          path="/salesorders/:salesordersId"
+          element={<ViewSingleSalesOrder />}
+        />
+        <Route
+          path="/salesorders/salesordersitem/:salesordersId"
+          element={<EditSalesOrder />}
+        />
         {/* <Route path="/packages" element={<PackageList />} />
         <Route path="/Shipments" element={<ShipmentList />} /> */}
         {/* <Route path="/deliverychallans" element={<DeliveryChallanList />} /> */}
         <Route path="/invoices" element={<InvoiceList />} />
-        <Route path="/invoices/addinvoices" element={<AddInvoices />} />  
+        <Route path="/invoices/addinvoices" element={<AddInvoices />} />
         <Route path="/invoices/:invoicesId" element={<ViewSingleInvoices />} />
-        <Route path="/invoices/invoicesitem/:invoicesId" element={<EditInvoices />} />
+        <Route
+          path="/invoices/invoicesitem/:invoicesId"
+          element={<EditInvoices />}
+        />
         {/* <Route path="/paymentsreceived" element={<PaymentsReceivedList />} /> */}
         {/* Purchases page */}
-         {/* Vendor page */}
+        {/* Vendor page */}
         <Route path="/vendors" element={<VendorList />} />
         <Route path="/vendors/addvendors" element={<AddVendors />} />
         <Route path="/vendors/:vendorsId" element={<ViewSingleVendors />} />
-        <Route path="/vendors/vendorsdetails/:vendorsId" element={<EditVendors/>} />
+        <Route
+          path="/vendors/vendorsdetails/:vendorsId"
+          element={<EditVendors />}
+        />
         {/* <Route path="/expenses" element={<ExpenseList />} /> */}
         <Route path="/purchaseorders" element={<PurchaseOrdersList />} />
-        <Route path="/purchaseorders/addpurchaseorders" element={<Addpurchaseorders />} />  
-        <Route path="/purchaseorders/:purchaseordersId" element={<ViewSinglepurchaseorders />} />
-        <Route path="/purchaseorders/purchaseordersitem/:purchaseordersId" element={<Editpurchaseorders/>} />
+        <Route
+          path="/purchaseorders/addpurchaseorders"
+          element={<Addpurchaseorders />}
+        />
+        <Route
+          path="/purchaseorders/:purchaseordersId"
+          element={<ViewSinglepurchaseorders />}
+        />
+        <Route
+          path="/purchaseorders/purchaseordersitem/:purchaseordersId"
+          element={<Editpurchaseorders />}
+        />
         {/* <Route path="/purchasereceives" element={<PurchaseReceiveList />} /> */}
         <Route path="/bills" element={<BillsList />} />
-        <Route path="/bills/addbills" element={<Addbills />} />  
+        <Route path="/bills/addbills" element={<Addbills />} />
         <Route path="/bills/:billsId" element={<ViewSinglebills />} />
-        <Route path="/bills/billsitem/:billsId" element={<Editbills/>} />
+        <Route path="/bills/billsitem/:billsId" element={<Editbills />} />
         {/* <Route path="/paymentsmade" element={<PaymentsMadeList />} /> */}
         {/* <Route path="/vendorcredits" element={<VendorCredits />} /> */}
         {/*   */}

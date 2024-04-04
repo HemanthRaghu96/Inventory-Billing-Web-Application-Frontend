@@ -10,7 +10,7 @@ import SalesOrderDropdown from "../../../components/SalesOrderDropdown";
 export default function EditInvoices() {
   const { invoicesId } = useParams();
   const [data, setData] = useState(null);
-console.log(data)
+// console.log(data)
   useEffect(() => {
     fetchSelecteData();
   }, []);
@@ -19,7 +19,7 @@ console.log(data)
     const response = await axios.get(
       `${API}getselectedinvoice/${invoicesId}`
     );
-    console.log(response.data.selectedInvoices[0]);
+    // console.log(response.data.selectedInvoices[0]);
     setData(response.data.selectedInvoices[0]);
   };
   return data ? (
