@@ -147,176 +147,177 @@ export default function Dashboard() {
   }
   // console.log(totalSalesOrders)
   return (
-    <section className="ml-14 mt-16 md:ml-56 h-full">
-      <div className="flex flex-col lg:flex-row justify-center">
+    <section className="ml-20 mt-16 md:ml-56 h-full">
+    <h1 className=" p-2 flex justify-center text-xl md:text-3xl font-bold">Dashboard</h1>
+      <div className="flex flex-col lg:flex-row justify-center items-center">
         <div>
           <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
-            <h1 className="bg-slate-100 p-2 flex justify-center text-2xl font-semibold">
+            <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Sales Activity
             </h1>
             <div className="flex justify-center">
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-blue-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-blue-400">
                   {totalCustomers}
                 </p>
-                <h1 className="p-2">Total Customers</h1>
+                <h1 className="p-2 text-xs md:text-base">Total Customers</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-yellow-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-yellow-400">
                   {totalSalesOrders}
                 </p>
-                <h1 className="p-2">Total Sales Orders</h1>
+                <h1 className="p-2 text-xs md:text-base">Total Sales Orders</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-green-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-green-400">
                   {totalInvoices}
                 </p>
-                <h1 className="p-2"> Total Invoices</h1>
+                <h1 className="p-2 text-xs md:text-base"> Total Invoices</h1>
               </div>
             </div>
           </div>
           <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
-            <h1 className="bg-slate-100 p-2 flex justify-center text-2xl font-semibold">
+            <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Invoices Status
             </h1>
             <div className="flex justify-center">
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-blue-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-blue-400">
                   {invoicesStatusUNPAID}
                 </p>
-                <h1 className="p-2 flex justify-center">UNPAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">UNPAID</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-yellow-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-yellow-400">
                   {invoicesStatusPARTIALLYPAID}
                 </p>
-                <h1 className="p-2 flex justify-center">PARTIALLY PAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">PARTIALLY PAID</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-green-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-green-400">
                   {invoicesStatusPAID}
                 </p>
-                <h1 className="p-2 flex justify-center">PAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">PAID</h1>
               </div>
             </div>
           </div>
           {/* <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
-            <h1 className="bg-slate-100 p-2 flex justify-center text-2xl font-semibold">
+            <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Invoices Amount
             </h1>
             <div className="flex justify-center">
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-blue-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-blue-400">
                   34000
                 </p>
-                <h1 className="p-2 flex justify-center">UNPAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">UNPAID</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-yellow-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-yellow-400">
                   20400
                 </p>
-                <h1 className="p-2 flex justify-center">PARTIALLY PAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">PARTIALLY PAID</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-green-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-green-400">
                   56360
                 </p>
-                <h1 className="p-2 flex justify-center">PAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">PAID</h1>
               </div>
             </div>
           </div> */}
         </div>
         <div className="flex flex-col justify-center items-center mt-5">
-          <h1 className=" p-2 flex justify-center text-2xl font-semibold">
+          <h1 className=" p-2 flex justify-center text-lg md:text-2xl font-semibold">
             Sales Order Summary
           </h1>
           <div className="flex justify-center">
-            <div className="border w-[250px] md:w-[500px] rounded-lg mt-10 mr-10">
+            <div className="border w-[250px]  md:w-[500px] rounded-lg mt-10 mr-10">
               <SalesOrderChart salesOrdersData={salesOrdersData} />
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row justify-center">
+      <div className="flex flex-col lg:flex-row justify-center items-center">
         <div>
           <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
-            <h1 className="bg-slate-100 p-2 flex justify-center text-2xl font-semibold">
+            <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Purchase Activity
             </h1>
             <div className="flex justify-center">
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-blue-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-blue-400">
                   {totalVendors}
                 </p>
-                <h1 className="p-2">Total Vendors</h1>
+                <h1 className="p-2 text-xs md:text-base">Total Vendors</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-yellow-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-yellow-400">
                   {totalPurchaseOrders}
                 </p>
-                <h1 className="p-2">Total Purchase Orders</h1>
+                <h1 className="p-2 text-xs md:text-base">Total Purchase Orders</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-green-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-green-400">
                   {totalBills}
                 </p>
-                <h1 className="p-2"> Total Bills</h1>
+                <h1 className="p-2 text-xs md:text-base"> Total Bills</h1>
               </div>
             </div>
           </div>
           <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
-            <h1 className="bg-slate-100 p-2 flex justify-center text-2xl font-semibold">
+            <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Bills Status
             </h1>
             <div className="flex justify-center">
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-blue-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-blue-400">
                   {billsStatusUNPAID}
                 </p>
-                <h1 className="p-2 flex justify-center">UNPAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">UNPAID</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-yellow-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-yellow-400">
                   {billsStatusPARTIALLYPAID}
                 </p>
-                <h1 className="p-2 flex justify-center">PARTIALLY PAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">PARTIALLY PAID</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-green-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-green-400">
                   {billsStatusPAID}
                 </p>
-                <h1 className="p-2 flex justify-center">PAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">PAID</h1>
               </div>
             </div>
           </div>
           {/* <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
-            <h1 className="bg-slate-100 p-2 flex justify-center text-2xl font-semibold">
+            <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Bills Amount
             </h1>
             <div className="flex justify-center">
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-blue-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-blue-400">
                   23400
                 </p>
-                <h1 className="p-2 flex justify-center">UNPAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">UNPAID</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-yellow-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-yellow-400">
                   23000
                 </p>
-                <h1 className="p-2 flex justify-center">PARTIALLY PAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">PARTIALLY PAID</h1>
               </div>
               <div className="mx-2">
-                <p className="flex justify-center m-4 text-3xl font-bold text-green-400">
+                <p className="flex justify-center m-4 text-xl md:text-3xl font-bold text-green-400">
                   50000
                 </p>
-                <h1 className="p-2 flex justify-center">PAID</h1>
+                <h1 className="p-2 flex justify-center text-xs md:text-base">PAID</h1>
               </div>
             </div>
           </div> */}
         </div>
         <div className="flex flex-col justify-center items-center mt-5">
-          <h1 className=" p-2 flex justify-center text-2xl font-semibold">
+          <h1 className=" p-2 flex justify-center  text-lg md:text-2xl font-semibold">
             Purchase Order Summary
           </h1>
           <div className="flex justify-center mb-10">

@@ -11,23 +11,19 @@ const SalesOrderChart  = ({ salesOrdersData }) => {
       {
         label: 'Sales Order ',
         data: totalAmounts,
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.6)', 
+        borderColor: 'rgba(75, 192, 192, 1)', 
         borderWidth: 1,
       },
     ],
   };
 
   const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
+     indexAxis: 'y' 
   };
 
   return (
-    <div className="chart-container">
+    <div className="chart-container p-1">
       <h2>Sales Chart</h2>
       <Bar data={data} options={options}/>
     </div>

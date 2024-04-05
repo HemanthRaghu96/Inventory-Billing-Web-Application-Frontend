@@ -19,15 +19,11 @@ const PurchaseOrderChart  = ({ purchaseOrdersData }) => {
   };
 
   const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
+    indexAxis: 'y'
   };
 
   return (
-    <div className="chart-container">
+    <div className="chart-container p-1">
       <h2>Purchase Chart</h2>
       <Bar data={data} options={options} />
     </div>
