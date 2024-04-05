@@ -6,8 +6,10 @@ import { MdDeleteOutline } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../../api/api";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function ViewSingleCustomers() {
+  const { open, setOpen } = useSidebar();
   const navigate=useNavigate()
   const [data, setData] = useState([]);
   const { customersId } = useParams();  
@@ -24,7 +26,7 @@ export default function ViewSingleCustomers() {
     await navigate('/customers')
   };
   return (
-    <section className="ml-14 mt-16  md:ml-56 h-screen">
+    <section className={open?"ml-16 mt-16  h-full":"ml-14 mt-16 md:ml-56 h-full"}>
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semibold lg:text-xl">Customer Details</h1>
         <div className="flex">

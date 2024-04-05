@@ -3,8 +3,10 @@ import { API } from "../../../api/api";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa6";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function BillsList() {
+  const { open, setOpen } = useSidebar();
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const column = [
@@ -34,7 +36,7 @@ export default function BillsList() {
   };
 
   return (
-    <section className="ml-14 mt-16 md:ml-56 h-screen">
+    <section className={open?"ml-16 mt-16  h-full":"ml-14 mt-16 md:ml-56 h-full"}>
       <div className="flex justify-between mr-5 md:mr-10 ld:mr-32">
         <h1 className="font-semibold text-xl mx-4">All Bills</h1>
         <Link to={"/bills/addbills"}>

@@ -6,6 +6,7 @@ import axios from "axios";
 import CustomerDropdown from "../../../components/CustomerDropdown";
 import { MdDelete } from "react-icons/md";
 import SalesOrderDropdown from "../../../components/SalesOrderDropdown";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function EditInvoices() {
   const { invoicesId } = useParams();
@@ -31,6 +32,7 @@ export default function EditInvoices() {
 
 export  function EditInvoice({data,invoicesId}) {
   const navigate = useNavigate();
+  const { open, setOpen } = useSidebar();
   const [customername, setCustomerName] = useState(data.customername);
   const [ordernumber, setOrderNumber] = useState(data.ordernumber);
   const [invoice, setInvoice] = useState(data.invoice);
@@ -88,7 +90,8 @@ export  function EditInvoice({data,invoicesId}) {
     setTotalAmount(calculatedTotal+Number(shipmentingcharges));
   }, [items,shipmentingcharges]);
   return (
-    <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
+    
+    <section className={open?"ml-16 mt-16  h-full overflow-y-auto":"ml-14 mt-16 md:ml-56 h-full overflow-y-auto"}>
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semibold md:text-xl">New Invoice</h1>
         <Link to="/invoices">

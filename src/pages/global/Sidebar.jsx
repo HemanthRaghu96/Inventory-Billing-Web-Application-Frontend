@@ -11,10 +11,11 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropLeftLine } from "react-icons/ri";
 import { PiPlugsConnected } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
+import { useSidebar } from "../../components/SidebarContext";
 
 export default function Sidebar() {
   const navigate=useNavigate()
-  const [open, setOpen] = useState(false);
+  const { open, setOpen } = useSidebar();
   const [showInventorySubPage, setShowInventorySubPage] = useState(false);
   const [showSalesSubPage, setShowSalesSubPage] = useState(false);
   const [showPurchasesSubPage, setShowPurchasesSubPage] = useState(false);

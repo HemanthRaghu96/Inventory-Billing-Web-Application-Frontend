@@ -6,8 +6,10 @@ import { MdDeleteOutline } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../../api/api";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function ViewSingleSalesOrder() {
+  const { open, setOpen } = useSidebar();
   const [data, setData] = useState([]);
   const { salesordersId } = useParams();
   const column = ["NAME", "QUANTITY", "PRICE"];
@@ -25,7 +27,7 @@ export default function ViewSingleSalesOrder() {
     await axios.delete(`${API}deletesalesorder/${salesordersId}`);
   };
   return (
-    <section className="ml-14 mt-16  md:ml-56 h-screen">
+    <section className={open?"ml-16 mt-16  h-full":"ml-14 mt-16 md:ml-56 h-full"}>
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semibold text-xs md:text-xl">Sales Order Details</h1>
         <div className="flex">

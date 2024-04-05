@@ -6,8 +6,10 @@ import { MdDeleteOutline } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../../api/api";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function ViewSingleInvoices() {
+  const { open, setOpen } = useSidebar();
   const [data, setData] = useState([]);
   const [total, setTotal] = useState("");
   const [itemData, setItemData] = useState([]);
@@ -44,7 +46,7 @@ export default function ViewSingleInvoices() {
     await axios.delete(`${API}deleteinvoice/${invoicesId}`);
   };
   return (
-    <section className="ml-14 mt-16  md:ml-56 h-screen">
+    <section className={open?"ml-16 mt-16  h-full":"ml-14 mt-16 md:ml-56 h-full"}>
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semibold md:text-xl">Invoice Details</h1>
         <div className="flex">

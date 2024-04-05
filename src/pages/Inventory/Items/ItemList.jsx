@@ -4,8 +4,10 @@ import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { API } from "../../../api/api";
 import ItemsCard from "../../../components/ItemsCard";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function ItemList() {
+  const { open, setOpen } = useSidebar();
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   // const column = ["NAME", "SKU", "UNIT", "DESCRIPTION", "PRICE"];
@@ -30,7 +32,7 @@ export default function ItemList() {
   };
 
   return (
-    <section className="ml-14 mt-16 md:ml-56 h-screen">
+    <section className={open?"ml-16 mt-16  h-full":"ml-14 mt-16 md:ml-56 h-full"}>
       <div className="flex justify-between mr-5 md:mr-10 ld:mr-32">
         <h1 className="font-semibold text-xl">All Items</h1>
         <Link to={"/items/additems"}>

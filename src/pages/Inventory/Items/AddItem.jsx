@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../../api/api";
+import { useSidebar } from "../../../components/SidebarContext";
 export default function AddItem() {
   const navigate = useNavigate();
+  const { open, setOpen } = useSidebar();
   const [error, setError] = useState(false);
   const [name, setName] = useState("");
   const [sku, setSku] = useState("");
@@ -53,7 +55,8 @@ export default function AddItem() {
     }
   };
   return (
-    <section className="ml-14 mt-16  md:ml-56 h-full overflow-y-auto">
+   
+    <section className={open?"ml-16 mt-16  h-full overflow-y-auto":"ml-14 mt-16 md:ml-56 h-full overflow-y-auto"}>
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semibold text-xl">New Item </h1>
         <Link to={"/items"}>

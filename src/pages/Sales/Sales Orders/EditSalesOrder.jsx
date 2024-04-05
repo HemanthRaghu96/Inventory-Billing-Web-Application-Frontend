@@ -6,6 +6,7 @@ import axios from "axios";
 import CustomerDropdown from "../../../components/CustomerDropdown";
 import { MdDelete } from "react-icons/md";
 import ItemDropdown from "../../../components/ItemDropdown";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function EditSalesOrder() {
   const { salesordersId } = useParams();
@@ -33,6 +34,7 @@ export default function EditSalesOrder() {
 
 export  function EditSalesOrders({ data, salesordersId }) {
   const navigate = useNavigate();
+  const { open, setOpen } = useSidebar();
   const [customername, setCustomerName] = useState(data.customername);
   const [salesorder, setSalesOrder] = useState(data.salesorder);
   const [date, setDate] = useState(data.date);
@@ -130,7 +132,8 @@ export  function EditSalesOrders({ data, salesordersId }) {
     setTotalamount((calculatedTotal + Number(shipmentingcharges)).toFixed(2));
   }, [items, shipmentingcharges]);
   return (
-    <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
+   
+     <section className={open?"ml-16 mt-16  h-full overflow-y-auto":"ml-14 mt-16 md:ml-56 h-full overflow-y-auto"}>
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semibold md:text-xl"> Sales Order details</h1>
         <Link to="/salesorders">

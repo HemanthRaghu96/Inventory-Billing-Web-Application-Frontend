@@ -29,7 +29,7 @@ const PurchaseOrderDropdown = ({ ordernumber, setOrderNumber }) => {
       <select
         value={ordernumber} // Set the selected item ID in the dropdown
         onChange={handleChange}
-        className="border-2 rounded-md px-2 h-5 md:h-8 w-[60px] md:w-full text-xs md:text-base"
+        className="border-2 rounded-md px-2 h-5 md:h-8 w-[100px] md:w-full text-xs md:text-base"
       >
         <option value="">Select Sales Order</option>
         {names.map((name) => (

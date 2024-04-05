@@ -4,8 +4,10 @@ import { API } from "../../api/api";
 import axios from "axios";
 import SalesOrderChart from "../../components/SalesOrderChart";
 import PurchaseOrderChart from "../../components/PurchaseOrderChart";
+import { useSidebar } from "../../components/SidebarContext";
 
 export default function Dashboard() {
+  const { open, setOpen } = useSidebar();
   const salesChartRef = useRef(null);
   const purchaseChartRef = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -147,11 +149,11 @@ export default function Dashboard() {
   }
   // console.log(totalSalesOrders)
   return (
-    <section className="ml-20 mt-16 md:ml-56 h-full">
+    <section className={open?"ml-16 mt-16  h-full":"ml-14 mt-16 md:ml-56 h-full"}>
     <h1 className=" p-2 flex justify-center text-xl md:text-3xl font-bold">Dashboard</h1>
       <div className="flex flex-col lg:flex-row justify-center items-center">
         <div>
-          <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
+          <div className="border w-[250px] md:w-[350px] lg:w-[400px] rounded-lg mt-10 mr-10">
             <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Sales Activity
             </h1>
@@ -176,7 +178,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
+          <div className="border w-[250px] md:w-[350px] lg:w-[400px] rounded-lg mt-10 mr-10">
             <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Invoices Status
             </h1>
@@ -201,7 +203,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          {/* <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
+          {/* <div className="border w-[250px] md:w-[350px] lg:w-[400px] rounded-lg mt-10 mr-10">
             <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Invoices Amount
             </h1>
@@ -232,15 +234,15 @@ export default function Dashboard() {
             Sales Order Summary
           </h1>
           <div className="flex justify-center">
-            <div className="border w-[250px]  md:w-[500px] rounded-lg mt-10 mr-10">
+            <div className="border w-[250px]  md:w-[400px] rounded-lg mt-10 mr-10">
               <SalesOrderChart salesOrdersData={salesOrdersData} />
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row justify-center items-center">
+      <div className="flex flex-col lg:flex-row justify-center items-center mb-10">
         <div>
-          <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
+          <div className="border w-[250px] md:w-[350px] lg:w-[400px] rounded-lg mt-10 mr-10">
             <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Purchase Activity
             </h1>
@@ -265,7 +267,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
+          <div className="border w-[250px] md:w-[350px] lg:w-[400px] rounded-lg mt-10 mr-10">
             <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Bills Status
             </h1>
@@ -290,7 +292,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          {/* <div className="border w-[250px] md:w-[350px] lg:w-[500px] rounded-lg mt-10 mr-10">
+          {/* <div className="border w-[250px] md:w-[350px] lg:w-[400px] rounded-lg mt-10 mr-10">
             <h1 className="bg-slate-100 p-2 flex justify-center text-base md:text-2xl font-semibold">
               Bills Amount
             </h1>
@@ -321,7 +323,7 @@ export default function Dashboard() {
             Purchase Order Summary
           </h1>
           <div className="flex justify-center mb-10">
-            <div className="border w-[250px] md:w-[500px] rounded-lg mt-10 mr-10">
+            <div className="border w-[250px] md:w-[400px] rounded-lg mt-10 mr-10">
               <PurchaseOrderChart purchaseOrdersData={purchaseOrdersData} />
             </div>
           </div>

@@ -51,6 +51,7 @@ import EditInvoices from "../Sales/Invoices/EditInvoices";
 import ResetPassword from "../../resetPassword/ResetPassword";
 import SucessEmailsent from "../../resetPassword/SucessEmailsent";
 import UserChangePassword from "../../resetPassword/UserChangePassword";
+import { SidebarProvider } from "../../components/SidebarContext";
 
 export default function Global() {
   const location = useLocation();
@@ -61,7 +62,9 @@ export default function Global() {
   const issucessemailsendPage = location.pathname === "/sucessemailsend";
   const isChangePasswordPage = location.pathname.startsWith("/forgotpassword");
   return (
+    
     <section className="app ">
+     <SidebarProvider>
       {!isLoginPage &&
         !isSignupPage &&
         !isResetPasswordPage &&
@@ -162,6 +165,7 @@ export default function Global() {
         {/* <Route path="/reports" element={<Reports />} /> */}
         {/* <Route path="/documents" element={<Documents />} /> */}
       </Routes>
+      </SidebarProvider>
     </section>
   );
 }

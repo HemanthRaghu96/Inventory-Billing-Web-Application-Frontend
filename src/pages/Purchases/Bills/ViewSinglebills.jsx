@@ -6,8 +6,10 @@ import { MdDeleteOutline } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../../api/api";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function ViewSinglebills() {
+  const { open, setOpen } = useSidebar();
   const [data, setData] = useState([]);
   const [total, setTotal] = useState("");
   const [itemData, setItemData] = useState([]);
@@ -45,7 +47,7 @@ export default function ViewSinglebills() {
     await axios.delete(`${API}deletebill/${billsId}`);
   };
   return (
-    <section className="ml-14 mt-16  md:ml-56 h-screen">
+    <section className={open?"ml-16 mt-16  h-full":"ml-14 mt-16 md:ml-56 h-full"}>
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semiboldtext-sm md:text-lg">Bill Details</h1>
         <div className="flex">

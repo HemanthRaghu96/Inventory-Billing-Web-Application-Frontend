@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../../api/api";
 import axios from "axios";
 import PurchaseOrderDropdown from "../../../components/PurchaseOrderDropdown";
+import { useSidebar } from "../../../components/SidebarContext";
 
 export default function Addbills() {
   const navigate = useNavigate();
+  const { open, setOpen } = useSidebar();
   const [error, setError] = useState(false);
   const [vendorname, setVendorName] = useState("");
   const [ordernumber, setOrderNumber] = useState("");
@@ -67,7 +69,7 @@ export default function Addbills() {
     setTotalAmount(calculatedTotal+Number(shipmentingcharges));
   }, [items,shipmentingcharges]);
   return (
-    <section className="ml-14 mt-16 md:ml-56 h-full overflow-y-auto">
+    <section className={open?"ml-16 mt-16  h-full overflow-y-auto":"ml-14 mt-16 md:ml-56 h-full overflow-y-auto"}>
       <div className="flex justify-between mr-5 md:mr-10 lg:mr-20">
         <h1 className="font-semibold  md:text-xl">New Bill</h1>
         <Link to="/bills">
