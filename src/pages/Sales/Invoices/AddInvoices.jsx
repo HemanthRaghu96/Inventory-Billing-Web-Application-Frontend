@@ -9,6 +9,7 @@ import SalesOrderDropdown from "../../../components/SalesOrderDropdown";
 
 export default function AddInvoices() {
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const [customername, setCustomerName] = useState("");
   const [ordernumber, setOrderNumber] = useState("");
   const [invoice, setInvoice] = useState("");
@@ -35,10 +36,12 @@ export default function AddInvoices() {
     };
     try {
       const response = await axios.post(`${API}addinvoice`, invoiceData);
+      setError(false);
       // console.log(response.data); // handle response as needed
       navigate("/invoices"); // navigate to sales orders page on successful save
     } catch (error) {
       console.error("Error adding sales order:", error);
+      setError(true);
       // Handle error state or display error message to the user
     }
   };
@@ -76,7 +79,7 @@ export default function AddInvoices() {
       <div className="flex justify-start">
         <div className="mt-5 w-[250px] md:w-[400px]">
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Invoice Number</h1>
+            <h1 className="text-xs md:text-base">Invoice Number*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -85,14 +88,14 @@ export default function AddInvoices() {
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Sales Order Number</h1>
+            <h1 className="text-xs md:text-base">Sales Order Number*</h1>
             <SalesOrderDropdown
               ordernumber={ordernumber}
               setOrderNumber={setOrderNumber}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base"> Invoice Date</h1>
+            <h1 className="text-xs md:text-base"> Invoice Date*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -110,7 +113,7 @@ export default function AddInvoices() {
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Payment Status</h1>
+            <h1 className="text-xs md:text-base">Payment Status*</h1>
             <select
               value={payment}
               onChange={(e) => setPayment(e.target.value)}
@@ -124,7 +127,8 @@ export default function AddInvoices() {
           </div>
         </div>
       </div>
-
+      {error?<div className="flex my-4"><h1 className="text-xs md:text-base text-red-500">Kindly fill all the mandatory (*) fields </h1></div>:""}
+     
       {/* Buttons for Save and Cancel */}
       <div className="flex my-4">
         <button

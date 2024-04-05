@@ -8,6 +8,7 @@ import { API } from "../../api/api";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const [datas, setDatas] = useState([]);
   const navigate=useNavigate()
 
@@ -25,12 +26,14 @@ export default function Login() {
       response.data.result.token &&
         localStorage.setItem("token", response.data.result.token || "");
         localStorage.setItem("email",email)
+        setError(false)
         if( localStorage.getItem("login", "true")){
           navigate('/dashboard')
         }
      
     } catch (err) {
       console.log("Error", err.message);
+      setError(true)
     }
   };
 
@@ -67,7 +70,9 @@ export default function Login() {
               onChange={(e) => handlePassword(e)}
               className="m-2 px-2 py-1 border bg-slate-100 rounded-md"
             />
+             {error? <p className="text-xs font-bold px-2 text-red-500">Invalid emailID or Password</p>:""}
             <button className="text-base font-semibold px-2 text-buttonColor text-right" onClick={()=>navigate("/resetpassword")}>Forgot Password?</button>
+          
             <button
               className="m-2 p-2 border rounded-lg bg-buttonColor text-white font-semibold cursor-pointer"
               onClick={() => handleLogin()}

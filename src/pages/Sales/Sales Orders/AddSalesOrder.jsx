@@ -9,6 +9,7 @@ import ItemDropdown from "../../../components/ItemDropdown";
 
 export default function AddSalesOrder() {
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const [customername, setCustomerName] = useState("");
   const [salesorder, setSalesOrder] = useState("");
   const [date, setDate] = useState("");
@@ -39,9 +40,11 @@ export default function AddSalesOrder() {
         await axios.put(`${API}edititems/${itemId}`, editedData);
       });
       await Promise.all(updatedItemsPromises); 
+      setError(false);
       navigate("/salesorders"); // navigate to sales orders page on successful save
     } catch (error) {
       console.error("Error adding sales order:", error);
+      setError(true);
       // Handle error state or display error message to the user
     }
   };
@@ -119,14 +122,14 @@ export default function AddSalesOrder() {
       <div className="flex justify-start">
         <div className="mt-5 w-[280px]">
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Customer Name</h1>
+            <h1 className="text-xs md:text-base">Customer Name*</h1>
             <CustomerDropdown
               customername={customername}
               setCustomerName={setCustomerName}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Sales Order Number</h1>
+            <h1 className="text-xs md:text-base">Sales Order Number*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -135,7 +138,7 @@ export default function AddSalesOrder() {
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Sales Order Date</h1>
+            <h1 className="text-xs md:text-base">Sales Order Date*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -156,7 +159,7 @@ export default function AddSalesOrder() {
       </div>
       {/* Item Table */}
       <div className="my-4">
-        <h1 className="font-semibold md:text-lg">Item Table</h1>
+        <h1 className="font-semibold md:text-lg">Item Table*</h1>
         <table className="w-full mt-4">
           <thead className="bg-gray-100">
             <tr>
@@ -257,6 +260,8 @@ export default function AddSalesOrder() {
           </span>
         </h1>
       </div>
+      {error?<div className="flex my-4"><h1 className="text-xs md:text-base text-red-500">Kindly fill all the mandatory (*) fields </h1></div>:""}
+     
       {/* Buttons for Save and Cancel */}
       <div className="flex my-4">
         <button

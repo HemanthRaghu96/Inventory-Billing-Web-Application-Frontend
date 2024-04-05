@@ -4,10 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../../api/api";
 import axios from "axios";
 
-
-
 export default function AddCustomers() {
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [displayname, setDisplayName] = useState("");
@@ -27,30 +26,32 @@ export default function AddCustomers() {
   const [shippingpincode, setShippingPincode] = useState("");
 
   const handleSave = async () => {
-    const addData = {
-      firstname,
-      lastname,
-      displayname,
-      companyname,
-      email,
-      phonenumber,
-      pan,
-      billingaddress,
-      billingcountry,
-      billingcity,
-      billingstate,
-      billingpincode,
-      shippingaddress,
-      shippingcountry,
-      shippingcity,
-      shippingstate,
-      shippingpincode,
-    };
-    const response = await axios.post(
-      `${API}addcustomer`,
-      addData
-    );
-    await navigate(`/customers`);
+    try {
+      const addData = {
+        firstname,
+        lastname,
+        displayname,
+        companyname,
+        email,
+        phonenumber,
+        pan,
+        billingaddress,
+        billingcountry,
+        billingcity,
+        billingstate,
+        billingpincode,
+        shippingaddress,
+        shippingcountry,
+        shippingcity,
+        shippingstate,
+        shippingpincode,
+      };
+      const response = await axios.post(`${API}addcustomer`, addData);
+      await navigate(`/customers`);
+    } catch (error) {
+      console.log("Error", error.message);
+      setError(true);
+    }
   };
   return (
     <section className="ml-14 mt-16  md:ml-56 h-full overflow-y-auto">
@@ -64,7 +65,7 @@ export default function AddCustomers() {
       <div className="flex justify-start ">
         <div className="mt-5 w-[220px] md:w-[320px]">
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">First Name</h1>
+            <h1 className="text-xs md:text-base">First Name*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -73,7 +74,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Last Name</h1>
+            <h1 className="text-xs md:text-base">Last Name*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -82,7 +83,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Display Name</h1>
+            <h1 className="text-xs md:text-base">Display Name*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -91,7 +92,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">company Name</h1>
+            <h1 className="text-xs md:text-base">company Name*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -100,7 +101,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Email</h1>
+            <h1 className="text-xs md:text-base">Email*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -109,7 +110,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Phone Number</h1>
+            <h1 className="text-xs md:text-base">Phone Number*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -118,7 +119,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">PAN</h1>
+            <h1 className="text-xs md:text-base">PAN*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -127,16 +128,13 @@ export default function AddCustomers() {
             />
           </div>
         </div>
-        
       </div>
       {/* Second set of data */}
       <div className="flex flex-col lg:flex-row justify-start ">
-      
         <div className=" mt-5 w-[220px] md:w-[320px]">
-        <h1 className="font-bold text-lg">Billing Address</h1>
+          <h1 className="font-bold text-lg">Billing Address</h1>
           <div className="flex justify-between my-4">
-         
-           <h1 className="text-xs md:text-base">Address</h1>
+            <h1 className="text-xs md:text-base">Address</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -145,7 +143,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">City</h1>
+            <h1 className="text-xs md:text-base">City</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -154,7 +152,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Country </h1>
+            <h1 className="text-xs md:text-base">Country </h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -163,7 +161,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">State </h1>
+            <h1 className="text-xs md:text-base">State </h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -172,7 +170,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Pincode </h1>
+            <h1 className="text-xs md:text-base">Pincode </h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -182,9 +180,9 @@ export default function AddCustomers() {
           </div>
         </div>
         <div className="mt-5 w-[220px] md:w-[320px] lg:ml-20">
-        <h1 className="font-bold text-lg">Shipping Address</h1>
+          <h1 className="font-bold text-lg">Shipping Address</h1>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Address</h1>
+            <h1 className="text-xs md:text-base">Address</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -193,7 +191,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">City</h1>
+            <h1 className="text-xs md:text-base">City</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -202,7 +200,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Country </h1>
+            <h1 className="text-xs md:text-base">Country </h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -211,7 +209,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">State </h1>
+            <h1 className="text-xs md:text-base">State </h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -220,7 +218,7 @@ export default function AddCustomers() {
             />
           </div>
           <div className="flex justify-between my-4">
-           <h1 className="text-xs md:text-base">Pincode </h1>
+            <h1 className="text-xs md:text-base">Pincode </h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -230,7 +228,16 @@ export default function AddCustomers() {
           </div>
         </div>
       </div>
-      
+
+      {error ? (
+        <div className="flex my-4">
+          <h1 className="text-xs md:text-base text-red-500">
+            Kindly fill all the mandatory (*) fields{" "}
+          </h1>
+        </div>
+      ) : (
+        ""
+      )}
 
       <div className="flex my-4">
         <button

@@ -7,6 +7,7 @@ import PurchaseOrderDropdown from "../../../components/PurchaseOrderDropdown";
 
 export default function Addbills() {
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const [vendorname, setVendorName] = useState("");
   const [ordernumber, setOrderNumber] = useState("");
   const [bill, setBill] = useState("");
@@ -35,9 +36,11 @@ export default function Addbills() {
     try {
       const response = await axios.post(`${API}addbill`, billData);
       console.log(response.data); // handle response as needed
+      setError(false);
       navigate("/bills"); // navigate to sales orders page on successful save
     } catch (error) {
       console.error("Error adding sales order:", error);
+      setError(true);
       // Handle error state or display error message to the user
     }
   };
@@ -76,7 +79,7 @@ export default function Addbills() {
         <div className="mt-5 w-[240px] md:w-[400px]">
           
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Bill Number</h1>
+            <h1 className="text-xs md:text-base">Bill Number*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -85,14 +88,14 @@ export default function Addbills() {
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base"> Order Number</h1>
+            <h1 className="text-xs md:text-base"> Order Number*</h1>
             <PurchaseOrderDropdown
               ordernumber={ordernumber}
               setOrderNumber={setOrderNumber}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base"> Bill Date</h1>
+            <h1 className="text-xs md:text-base"> Bill Date*</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -110,7 +113,7 @@ export default function Addbills() {
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Payment Status</h1>
+            <h1 className="text-xs md:text-base">Payment Status*</h1>
             <select
         value={payment}
         onChange={(e)=>setPayment(e.target.value)}
@@ -126,7 +129,8 @@ export default function Addbills() {
           </div>
         </div>
       </div>
-   
+      {error?<div className="flex my-4"><h1 className="text-xs md:text-base text-red-500">Kindly fill all the mandatory (*) fields </h1></div>:""}
+     
       {/* Buttons for Save and Cancel */}
       <div className="flex my-4">
         <button

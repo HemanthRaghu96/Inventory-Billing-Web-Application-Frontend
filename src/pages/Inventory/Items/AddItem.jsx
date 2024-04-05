@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../../api/api";
 export default function AddItem() {
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const [name, setName] = useState("");
   const [sku, setSku] = useState("");
   const [unit, setUnit] = useState("");
@@ -23,27 +24,33 @@ export default function AddItem() {
   const [purchaseaccount, setPurchaseAccount] = useState("");
   const [purchasedescription, setPurchaseDescription] = useState("");
   const handleSave = async () => {
-    const newData = {
-      name,
-      sku,
-      unit,
-      dimensions,
-      manufacturer,
-      upc,
-      ean,
-      weight,
-      brand,
-      mpn,
-      isbn,
-      sellingprice,
-      salesaccount,
-      salesdescription,
-      costprice,
-      purchaseaccount,
-      purchasedescription,
-    };
-    const response = await axios.post(`${API}additems`, newData);
-    await navigate(`/items`);
+    try {
+      const newData = {
+        name,
+        sku,
+        unit,
+        dimensions,
+        manufacturer,
+        upc,
+        ean,
+        weight,
+        brand,
+        mpn,
+        isbn,
+        sellingprice,
+        salesaccount,
+        salesdescription,
+        costprice,
+        purchaseaccount,
+        purchasedescription,
+      };
+      const response = await axios.post(`${API}additems`, newData);
+      await navigate(`/items`);
+      setError(false);
+    } catch (error) {
+      console.log("Error", error.message);
+      setError(true);
+    }
   };
   return (
     <section className="ml-14 mt-16  md:ml-56 h-full overflow-y-auto">
@@ -73,7 +80,7 @@ export default function AddItem() {
             />
           </div>
           <div className="flex justify-between  my-4">
-            <h1 className="text-xs md:text-base">Unit*</h1>
+            <h1 className="text-xs md:text-base">Unit*(Number)</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -173,7 +180,7 @@ export default function AddItem() {
             />
           </div>
           <div className="flex justify-between  my-4">
-            <h1 className="text-xs md:text-base">Account*</h1>
+            <h1 className="text-xs md:text-base">Account</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -199,7 +206,7 @@ export default function AddItem() {
             />
           </div>
           <div className="flex justify-between  my-4">
-            <h1 className="text-xs md:text-base">Account*</h1>
+            <h1 className="text-xs md:text-base">Account</h1>
             <input
               type="text"
               className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
@@ -244,6 +251,7 @@ export default function AddItem() {
           </div>
         </div>
       </div> */}
+      {error?<div className="flex my-4"><h1 className="text-xs md:text-base text-red-500">Kindly fill all the mandatory (*) fields </h1></div>:""}
       <div className="flex my-4">
         <button
           className="border rounded-lg bg-buttonColor text-white px-2 py-1 mr-3"

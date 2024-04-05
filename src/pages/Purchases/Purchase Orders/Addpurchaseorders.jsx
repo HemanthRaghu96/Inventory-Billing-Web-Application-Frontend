@@ -9,6 +9,7 @@ import ItemDropdown from "../../../components/ItemDropdown";
 
 export default function Addpurchaseorders() {
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const [vendorname, setVendorName] = useState("");
   const [purchaseorder, setPurchaseOrder] = useState("");
   const [date, setDate] = useState("");
@@ -17,7 +18,7 @@ export default function Addpurchaseorders() {
   const [totalamount, setTotalamount] = useState("");
   const [shipmentingcharges, setShipmentingCharges] = useState("");
   const [customernote, setCustomerNote] = useState("");
-// console.log(items)
+  // console.log(items)
   const handleSave = async () => {
     const purchaseorderData = {
       vendorname,
@@ -30,18 +31,23 @@ export default function Addpurchaseorders() {
       customernote,
     };
     try {
-      const response = await axios.post(`${API}addpurchaseorder`, purchaseorderData);
+      const response = await axios.post(
+        `${API}addpurchaseorder`,
+        purchaseorderData
+      );
       // console.log(response.data); // handle response as needed
       const updatedItemsPromises = items.map(async (item) => {
         const { itemId, quantity } = item;
         const itemDetails = await fetchItemDetails(itemId);
-        const editedData = { unit: itemDetails.unit + quantity  };
+        const editedData = { unit: itemDetails.unit + quantity };
         await axios.put(`${API}edititems/${itemId}`, editedData);
       });
-      await Promise.all(updatedItemsPromises); 
+      await Promise.all(updatedItemsPromises);
+      setError(false);
       navigate("/purchaseorders"); // navigate to sales orders page on successful save
     } catch (error) {
       console.error("Error adding sales order:", error);
+      setError(true);
       // Handle error state or display error message to the user
     }
   };
@@ -86,7 +92,7 @@ export default function Addpurchaseorders() {
           updatedItems[index] = {
             ...updatedItems[index],
             price: totalPrice.toFixed(2), // Update price based on quantity and fetched details
-          }; 
+          };
         }
 
         setItems(updatedItems);
@@ -118,26 +124,26 @@ export default function Addpurchaseorders() {
       <div className="flex justify-start">
         <div className="mt-5 w-[240px] md:w-[400px]">
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Vendor Name</h1>
+            <h1 className="text-xs md:text-base">Vendor Name*</h1>
             <VendorDropdown
               vendorname={vendorname}
               setVendorName={setVendorName}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Purchase Order Number</h1>
+            <h1 className="text-xs md:text-base">Purchase Order Number*</h1>
             <input
               type="text"
-             className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setPurchaseOrder(e.target.value)}
               value={purchaseorder}
             />
           </div>
           <div className="flex justify-between my-4">
-            <h1 className="text-xs md:text-base">Purchase Order Date</h1>
+            <h1 className="text-xs md:text-base">Purchase Order Date*</h1>
             <input
               type="text"
-             className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setDate(e.target.value)}
               value={date}
             />
@@ -146,7 +152,7 @@ export default function Addpurchaseorders() {
             <h1 className="text-xs md:text-base">Expected Shipment Date</h1>
             <input
               type="text"
-             className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
+              className="border-2 rounded-md px-2 h-5 md:h-8 w-[8.5rem]"
               onChange={(e) => setShipmentDate(e.target.value)}
               value={shipmentdate}
             />
@@ -155,10 +161,10 @@ export default function Addpurchaseorders() {
       </div>
       {/* Item Table */}
       <div className="my-4">
-        <h1 className="font-semibold md:text-xl">Item Table</h1>
+        <h1 className="font-semibold md:text-xl">Item Table*</h1>
         <table className="w-full mt-4">
           <thead className="bg-gray-100">
-            <tr >
+            <tr>
               <th className="font-semibold text-xs md:text-lg">Item Name</th>
               <th className="font-semibold text-xs md:text-lg">Quantity</th>
               <th className="font-semibold text-xs md:text-lg">Discount</th>
@@ -169,7 +175,7 @@ export default function Addpurchaseorders() {
             {items.map((item, index) => (
               <tr key={index}>
                 <td>
-                <ItemDropdown
+                  <ItemDropdown
                     selectedItemId={item.itemId} // Pass the selected item's ID to the dropdown
                     handleItemChange={(selectedItemId) =>
                       handleItemChange(index, "itemId", selectedItemId)
@@ -237,13 +243,27 @@ export default function Addpurchaseorders() {
           Add Item
         </button>
       </div>
-<div className="">
-<h1 className="font-semibold md:text-lg">Sub Total</h1>
-<h1 className="flex  text-xs md:text-base">Shipping Charges <span><input type="text" className="border-2 rounded-md px-2 h-5 md:h-8 ml-5 md:ml-10 w-[140px]" onChange={(e)=>setShipmentingCharges(e.target.value)}/></span></h1>
-<h1  className="flex mt-2 font-semibold">Total <span className="ml-32 font-semibold  text-xs md:text-base">{totalamount}</span></h1>
-
-
-</div>
+      <div className="">
+        <h1 className="font-semibold md:text-lg">Sub Total</h1>
+        <h1 className="flex  text-xs md:text-base">
+          Shipping Charges{" "}
+          <span>
+            <input
+              type="text"
+              className="border-2 rounded-md px-2 h-5 md:h-8 ml-5 md:ml-10 w-[140px]"
+              onChange={(e) => setShipmentingCharges(e.target.value)}
+            />
+          </span>
+        </h1>
+        <h1 className="flex mt-2 font-semibold">
+          Total{" "}
+          <span className="ml-32 font-semibold  text-xs md:text-base">
+            {totalamount}
+          </span>
+        </h1>
+      </div>
+      {error?<div className="flex my-4"><h1 className="text-xs md:text-base text-red-500">Kindly fill all the mandatory (*) fields </h1></div>:""}
+      
       {/* Buttons for Save and Cancel */}
       <div className="flex my-4">
         <button
