@@ -5,6 +5,7 @@ import axios from "axios";
 import SalesOrderChart from "../../components/SalesOrderChart";
 import PurchaseOrderChart from "../../components/PurchaseOrderChart";
 import { useSidebar } from "../../components/SidebarContext";
+import Footer from "../global/Footer";
 
 export default function Dashboard() {
   const { open, setOpen } = useSidebar();
@@ -329,6 +330,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }

@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../../api/api";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function ViewSingleVendors() {
   const navigate=useNavigate()
@@ -110,9 +111,7 @@ export default function ViewSingleVendors() {
         </div>
       </div>
      </div>
+     <Footer />
     </section>
   );
-}
-{
-  /* <h1 className="font-semibold text-xl">Item Name</h1> */
 }

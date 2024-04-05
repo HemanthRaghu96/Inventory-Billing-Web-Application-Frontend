@@ -7,6 +7,7 @@ import CustomerDropdown from "../../../components/CustomerDropdown";
 import { MdDelete } from "react-icons/md";
 import ItemDropdown from "../../../components/ItemDropdown";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function AddSalesOrder() {
   const navigate = useNavigate();
@@ -280,6 +281,7 @@ export default function AddSalesOrder() {
           Cancel
         </button>
       </div>
+      <Footer />
     </section>
   );
 }

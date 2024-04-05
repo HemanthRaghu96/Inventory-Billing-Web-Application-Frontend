@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa6";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function VendorList() {
   const { open, setOpen } = useSidebar();
@@ -117,6 +118,7 @@ export default function VendorList() {
           </button>
         </div>
       )}
+      <Footer />
     </section>
   );
 }

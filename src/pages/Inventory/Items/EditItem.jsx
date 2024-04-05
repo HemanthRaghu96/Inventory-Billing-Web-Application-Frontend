@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { API } from "../../../api/api";
 import axios from "axios";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function EditItem() {
  
@@ -302,6 +303,7 @@ function EditItems({ data, itemId }) {
           Cancel
         </button>
       </div>
+      <Footer />
     </section>
   );
 }

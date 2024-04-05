@@ -4,6 +4,7 @@ import { HiMiniXMark } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../../api/api";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 export default function AddItem() {
   const navigate = useNavigate();
   const { open, setOpen } = useSidebar();
@@ -269,6 +270,7 @@ export default function AddItem() {
           Cancel
         </button>
       </div>
+      <Footer />
     </section>
   );
 }

@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../../api/api";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 export default function ViewSingleItem() {
   const { open, setOpen } = useSidebar();
   const [data, setData] = useState([]);
@@ -89,9 +90,7 @@ export default function ViewSingleItem() {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
-}
-{
-  /* <h1 className="font-semibold text-xl">Item Name</h1> */
 }

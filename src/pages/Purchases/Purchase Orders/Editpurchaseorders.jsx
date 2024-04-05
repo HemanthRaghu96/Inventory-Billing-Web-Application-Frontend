@@ -7,6 +7,7 @@ import VendorDropdown from "../../../components/VendorDropdown";
 import { MdDelete } from "react-icons/md";
 import ItemDropdown from "../../../components/ItemDropdown";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function Editpurchaseorders() {
   const { purchaseordersId } = useParams();
@@ -285,6 +286,7 @@ export  function Editpurchaseorder({ data, purchaseordersId }) {
           Cancel
         </button>
       </div>
+      <Footer />
     </section>
   );
 }

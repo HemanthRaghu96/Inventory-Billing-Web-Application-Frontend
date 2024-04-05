@@ -7,6 +7,7 @@ import CustomerDropdown from "../../../components/CustomerDropdown";
 import { MdDelete } from "react-icons/md";
 import ItemDropdown from "../../../components/ItemDropdown";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function EditSalesOrder() {
   const { salesordersId } = useParams();
@@ -285,6 +286,7 @@ export  function EditSalesOrders({ data, salesordersId }) {
           Cancel
         </button>
       </div>
+      <Footer />
     </section>
   );
 }

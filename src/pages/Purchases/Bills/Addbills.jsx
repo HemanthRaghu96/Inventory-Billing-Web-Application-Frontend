@@ -5,6 +5,7 @@ import { API } from "../../../api/api";
 import axios from "axios";
 import PurchaseOrderDropdown from "../../../components/PurchaseOrderDropdown";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function Addbills() {
   const navigate = useNavigate();
@@ -148,6 +149,7 @@ export default function Addbills() {
           Cancel
         </button>
       </div>
+      <Footer />
     </section>
   );
 }

@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../../../api/api";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function ViewSingleInvoices() {
   const { open, setOpen } = useSidebar();
@@ -142,6 +143,7 @@ export default function ViewSingleInvoices() {
           <h1 className="ml-10 text-xs md:text-xl">{total}</h1>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }

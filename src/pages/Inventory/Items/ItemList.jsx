@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { API } from "../../../api/api";
 import ItemsCard from "../../../components/ItemsCard";
 import { useSidebar } from "../../../components/SidebarContext";
+import Footer from "../../global/Footer";
 
 export default function ItemList() {
   const { open, setOpen } = useSidebar();
@@ -120,6 +121,7 @@ export default function ItemList() {
           </tbody>
         </table>
       </div> */}
+      <Footer />  
     </section>
   );
 }
